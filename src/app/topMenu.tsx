@@ -1,30 +1,65 @@
 'use client';
-
-import { faBars, faSchoolCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faClose, faSchoolCircleXmark, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { useState } from 'react';
+import LogoSvg from './images/logo.svg';
+import { usePathname } from 'next/navigation';
+
+const normalizePath = (path: string) => {
+  const lowerPath = path === '' ? '/' : path.toLowerCase();
+  return lowerPath === '/home' ? '/' : lowerPath;
+};
 
 function TopMenu() {
+  const pathname = normalizePath(usePathname());
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigation = [
-    { name: 'Product', href: '#' },
-    { name: 'Features', href: '#' },
-    { name: 'Marketplace', href: '#' },
-    { name: 'Company', href: '#' },
+    { name: 'Home', href: '/' },
+    { name: 'About Wassera', href: '/about' },
+    { name: 'Our Services', href: '/services' },
+    { name: 'News', href: '/news' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   return (
-    <header className="menu">
-      <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
-        <div className="flex lg:flex-1">
+    <header className="menu bg-background-secondary">
+      <nav aria-label="Global" className="flex items-center justify-between p-6 px-4 sm:px-6 lg:px-10 xl:px-32 max-w-7xl mx-auto">
+        <div className="flex mr-12">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img alt="" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" className="h-8 w-auto" />
+            <span className="sr-only">Wassera</span>
+            <LogoSvg className="w-auto h-10" />
+            <div className="flex flex-col ml-4"></div>
           </a>
         </div>
-        <div className="flex lg:hidden">
+        <div className="flex-grow lg:hidden"></div>
+
+        <div className="hidden lg:flex lg:gap-x-12 ">
+          {navigation.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className={`text-md py-2 font-semibold leading-6  ${
+                pathname === item.href ? 'text-primary border-b-2 border-primary' : 'text-gray-900'
+              } hover:text-primary-700`}
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+        <div className="flex justify-end">
+          <button
+            type="button"
+            className="text-slate-500 hover:text-slate-600 w-8 h-8 -my-1 flex items-center justify-center dark:hover:text-slate-300"
+          >
+            <span className="sr-only">Search</span>
+            <FontAwesomeIcon icon={faSearch} className="w-4 h-4" />
+          </button>
+        </div>
+        <div className="flex items-center ml-4 lg:hidden">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
@@ -34,30 +69,18 @@ function TopMenu() {
             <span className="sr-only">Open main menu</span>
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
-              {item.name}
-            </a>
-          ))}
-        </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img alt="" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" className="h-8 w-auto" />
+              <span className="sr-only">Wassera</span>
+              <LogoSvg className="w-auto h-10" />
             </a>
             <button type="button" onClick={() => setMobileMenuOpen(false)} className="-m-2.5 rounded-md p-2.5 text-gray-700">
               <span className="sr-only">Close menu</span>
-              <FontAwesomeIcon icon={faSchoolCircleXmark} className="text-gray-500" />
+              <FontAwesomeIcon icon={faClose} className="text-gray-500" />
             </button>
           </div>
           <div className="mt-6 flow-root">
@@ -72,11 +95,6 @@ function TopMenu() {
                     {item.name}
                   </a>
                 ))}
-              </div>
-              <div className="py-6">
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                  Log in
-                </a>
               </div>
             </div>
           </div>

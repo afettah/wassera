@@ -10,17 +10,17 @@ export default function TopBar() {
   return (
     <header className="top-header">
       {/*  TODO : FIX RESPONSIVE */}
-      <div className="hidden md:flex lg:pr-28 py-2 flex flex-row-reverse gap-5">
+      <div className="hidden md:flex max-w-7xl mx-auto lg:pr-28 py-2 flex flex-row-reverse gap-5 text-xs text-gray-500">
         <div className="flex items-center gap-2 px-2 border-l-2 border-gray-300">
-          <FontAwesomeIcon icon={faGlobe} className="text-gray-500" />
+          <FontAwesomeIcon icon={faGlobe} className="w-4 h-4" />
           <span>{language}</span>
         </div>
         <div className="flex items-center gap-2">
-          <FontAwesomeIcon icon={faEnvelope} className=" text-gray-500" />
+          <FontAwesomeIcon icon={faEnvelope} className=" w-4 h-4" />
           <span>{headerContacts.email}</span>
         </div>
         <div className="flex items-center gap-2">
-          <FontAwesomeIcon icon={faPhone} className="text-gray-500" />
+          <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
           <span>{headerContacts.phone}</span>
         </div>
       </div>
