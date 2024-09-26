@@ -25,7 +25,7 @@ function InfoSection() {
   ];
   return (
     <section className="info-section">
-      <div className="max-w-7xl mx-auto mt-20">
+      <div className=" mt-20">
         <div className="flex flex-col lg:flex-row lg:space-x-6 space-y-4 lg:space-y-0 items-center justify-center ">
           {cards.map((card) => (
             <div key={card.title} className="bg-background-secondary max-w-sm rounded-xl overflow-hidden shadow-lg  ">
