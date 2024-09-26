@@ -1,52 +1,87 @@
-import Image from 'next/image';
-function InfoSection() {
-  const cards = [
-    {
-      title: 'Why Wassera?',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
-      link: '/why-wassera',
-      image: '/images/wassera.svg',
-    },
-    {
-      title: 'Our Mission',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
-      link: '/why-wassera',
-      image: '/images/mission.svg',
-    },
-    {
-      title: 'Our Vision',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
-      link: '/why-wassera',
-      image: '/images/mission.svg',
-    },
-  ];
-  return (
-    <section className="info-section">
-      <div className=" mt-20">
-        <div className="flex flex-col lg:flex-row lg:space-x-6 space-y-4 lg:space-y-0 items-center justify-center ">
-          {cards.map((card) => (
-            <div key={card.title} className="bg-background-secondary max-w-sm rounded-xl overflow-hidden shadow-lg  ">
-              <div className="mt-4 flex items-center justify-center">
-                <Image className="w-30 h-30" src={card.image} alt={card.title} width={200} height={200} />
-              </div>
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Container from "./components/container";
+import { ArrowRight } from "lucide-react";
 
-              <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-4 text text-center">{card.title}</div>
-                <p className="text-gray-700 text-base">{card.description}</p>
-              </div>
-              <div className="flex justify-center">
-                <button className="bg-green-300/10 px-6 py-3 text-primary uppercase w-full sm:w-auto mx-auto">Learn more</button>
-              </div>
-              <div className="pb-4 mb-0.2 border-b-2 border-primary w-1/2 mx-auto"></div>
-            </div>
-          ))}
+const cards = [
+  {
+    title: "Why Wassera?",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+    link: "/why-wassera",
+    image: "/images/wassera.svg",
+  },
+  {
+    title: "Our Mission",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+    link: "/our-mission",
+    image: "/images/mission.svg",
+  },
+  {
+    title: "Our Vision",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+    link: "/our-vision",
+    image: "/images/vision.svg",
+  },
+];
+
+export default function InfoSection() {
+  return (
+    <div className="w-full bg-gray-100 h-[250px]">
+      <Container className="info-section py-20 ">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cards.map((card) => (
+              <Card
+                key={card.title}
+                className="flex flex-col h-96 shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] text-center"
+              >
+                <CardHeader className="flex items-center justify-center p-2">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    width={170}
+                    height={170}
+                    className="w-full h-32 object-contain"
+                  />
+                </CardHeader>
+                <CardContent className="flex-grow flex flex-col justify-between">
+                  <div>
+                    <CardTitle className="text-xl mb-4 text-center">
+                      {card.title}
+                    </CardTitle>
+                    <p className="text-gray-700 text-base">
+                      {card.description}
+                    </p>
+                  </div>
+                </CardContent>
+                <CardFooter className="flex flex-col items-center mt-auto pb-0">
+                  <Button
+                    asChild
+                    className="w-full  sm:w-auto text-xl bg-primary/10 text-primary hover:bg-primary/20"
+                  >
+                    <div className="flex gap-3 justify-center items-center">
+                      <ArrowRight width={20} />
+                      <Link href={card.link}>Learn more</Link>
+                    </div>
+                  </Button>
+                  <div className="mt-4 border-b-2 border-primary w-3/4"></div>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </div>
   );
 }
-
-export default InfoSection;

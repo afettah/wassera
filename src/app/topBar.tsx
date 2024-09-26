@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { Globe, Mail, Phone } from "lucide-react"
-import Container from "./components/container"
-import { Button } from "@/components/ui/button"
+import { Globe, Mail, Phone } from "lucide-react";
+import Container from "./components/container";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 export default function TopBar() {
-  const language = "عربي"
+  const language = "عربي";
   const headerContacts = {
     email: "info@wassera.com.sa",
     phone: "+966 59 857 7775",
-  }
+  };
 
   return (
-    <header className="-2">
-      <Container>
+    <header className=" bg-gradient-to-r from-gray-100 from-0% via-primary/5 to-primary/5 to-100%">
+      <Container className="pb-0">
         <div className="flex flex-col sm:flex-row-reverse  items-center gap-2 sm:gap-5 text-xs text-gray-500">
           <div className="flex items-center gap-2 px-2 sm:border-l-2 border-gray-300">
             <DropdownMenu>
@@ -54,5 +54,5 @@ export default function TopBar() {
         </div>
       </Container>
     </header>
-  )
+  );
 }

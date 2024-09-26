@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
   return (
-    <section className="py-8 md:py-16">
+    <section className="py-8 md:py-8">
       <Container >
         <div className="flex flex-col lg:flex-row justify-between space-y-8 lg:space-y-0 lg:space-x-12">
           <div className="w-full lg:w-2/5 flex flex-col space-y-8 lg:space-y-12 my-8 lg:my-16">

@@ -7,6 +7,7 @@ import { Search, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Container from "./components/container";
+import Logo from "@/app/images/logo.svg"; 
 
 const normalizePath = (path: string) => {
   const lowerPath = path === "" ? "/" : path.toLowerCase();
@@ -27,17 +28,15 @@ export default function TopMenu() {
   ];
 
   return (
-    <Container className="p-0">
-      <header className="bg-background-secondary py-4">
+    <Container className="sm:px-4">
+      <header className="bg-background-secondary">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center">
             <div className="flex flex-col font-bold text-2xl text-gray-800 leading-none">
               <span className="text-right">وصيــــرة</span>
               <span>waseera</span>
             </div>
-            <svg className="w-auto h-10" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
+            <Logo className="h-12 w-12" />
           </Link>
 
           <div className="hidden lg:flex lg:gap-x-12 items-center">
@@ -45,7 +44,7 @@ export default function TopMenu() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-semibold leading-6 ${
+                className={`font-semibold leading-6 ${
                   pathname === item.href
                     ? "text-primary border-b-2 border-primary"
                     : "text-gray-900"
