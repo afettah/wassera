@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import CountUp from "react-countup";
 import Container from "./components/container";
 
@@ -49,14 +47,16 @@ export default function Statistics() {
                   />
                   {stat.suffix}
                 </h3>
-                <p className="mt-2 text-base font-semibold text-muted-foreground uppercase leading-tight" >
+                <p className="mt-2 text-base font-semibold text-muted-foreground uppercase leading-tight">
                   {(() => {
                     const words = stat.label.split(" ");
                     if (words.length === 1) {
                       const mid = Math.ceil(words[0].length / 2);
                       return (
                         <>
-                          <span className="block">{words[0].slice(0, mid)}</span>
+                          <span className="block">
+                            {words[0].slice(0, mid)}
+                          </span>
                           <span className="block">{words[0].slice(mid)}</span>
                         </>
                       );
