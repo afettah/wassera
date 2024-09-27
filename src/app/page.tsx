@@ -1,7 +1,9 @@
 import SubContainer from "./components/sub-container";
+import Footer from "./Footer";
 import HeroSection from "./heroSection";
 import InfoSection from "./infoSection";
 import OfferSection from "./OfferSection";
+import WaseeraPartnerships from "./PartnerSection";
 import Statistics from "./statistics";
 import TopBar from "./topBar";
 import TopMenu from "./topMenu";
@@ -17,6 +19,8 @@ export default function Home() {
       <InfoSection />
       <OfferSection />
       <Statistics />
+      <WaseeraPartnerships />
+      <Footer />
     </div>
   );
 }
