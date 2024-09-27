@@ -37,7 +37,7 @@ const cards = [
 
 export default function InfoSection() {
   return (
-    <div className="w-full bg-gray-100 h-[250px]">
+    <div className="w-full bg-gray-100 ">
       <Container className="info-section py-20 ">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

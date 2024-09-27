@@ -28,7 +28,7 @@ export default function TopMenu() {
   ];
 
   return (
-    <Container className="sm:px-4">
+    <Container className="sm:px-4 py-1">
       <header className="bg-background-secondary">
         <nav className="flex items-center justify-between">
           <Link href="/" className="flex items-center">

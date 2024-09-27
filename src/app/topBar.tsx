@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Globe, Mail, Phone } from "lucide-react";
 import Container from "./components/container";
 import { Button } from "@/components/ui/button";
@@ -11,16 +12,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function TopBar() {
-  const language = "عربي";
+  const [language, setLanguage] = useState("");
+
+  useEffect(() => {
+    setLanguage("عربي");
+  }, []);
+
   const headerContacts = {
     email: "info@wassera.com.sa",
     phone: "+966 59 857 7775",
   };
 
   return (
-    <header className=" bg-gradient-to-r from-gray-100 from-0% via-primary/5 to-primary/5 to-100%">
-      <Container className="pb-0">
-        <div className="flex flex-col sm:flex-row-reverse  items-center gap-2 sm:gap-5 text-xs text-gray-500">
+    <header className="bg-[linear-gradient(135deg,_gray-100_0%,_primary/5_50%,_primary/5_100%)]">
+      <Container className="pb-0 py-0">
+        <div className="flex sm:flex-row-reverse items-center gap-2 sm:gap-5 text-xs text-gray-500">
           <div className="flex items-center gap-2 px-2 sm:border-l-2 border-gray-300">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -30,12 +36,12 @@ export default function TopBar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem>English</DropdownMenuItem>
-                <DropdownMenuItem>عربي</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLanguage("English")}>English</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLanguage("عربي")}>عربي</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-5">
+          <div className="flex sm:flex-row items-center gap-2 sm:gap-5">
             <a
               href={`mailto:${headerContacts.email}`}
               className="flex items-center gap-2 hover:text-primary transition-colors"

@@ -1,20 +1,18 @@
 import Image from "next/image";
 import Container from "./components/container";
-import { Button } from "@/components/ui/button";
+import CustomButton from "./components/button";
 
 export default function HeroSection() {
   return (
     <section className="py-8 md:py-8">
-      <Container >
+      <Container>
         <div className="flex flex-col lg:flex-row justify-between space-y-8 lg:space-y-0 lg:space-x-12">
           <div className="w-full lg:w-2/5 flex flex-col space-y-8 lg:space-y-12 my-8 lg:my-16">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center lg:text-left text-gray-700">
               Let&apos;s start something big together.
             </h1>
             <div className="flex justify-center lg:justify-start">
-              <Button size={"lg"} className="">
-                Learn More
-              </Button>
+              <CustomButton>Learn More</CustomButton>
             </div>
           </div>
 
