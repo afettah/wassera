@@ -24,10 +24,10 @@ export default function TopBar() {
   };
 
   return (
-    <header className="bg-[linear-gradient(135deg,_gray-100_0%,_primary/5_50%,_primary/5_100%)]">
+    <header className="bg-[linear-gradient(135deg,_gray-100_0%,_primary/5_50%,_primary/5_100%)] hidden sm:block">
       <Container className="pb-0 py-0">
         <div className="flex sm:flex-row-reverse items-center gap-2 sm:gap-5 text-xs text-gray-500">
-          <div className="flex items-center gap-2 px-2 sm:border-l-2 border-gray-300">
+          <div className="hidden sm:flex items-center gap-2 px-2 sm:border-l-2 border-gray-300">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="h-8 px-2 text-xs text-gray-500">

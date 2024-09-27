@@ -3,11 +3,17 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Search, Menu } from "lucide-react";
+import { Search, Menu, Globe } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Container from "./components/container";
-import Logo from "@/app/images/logo.svg"; 
+import Logo from "@/app/images/logo.svg";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const normalizePath = (path: string) => {
   const lowerPath = path === "" ? "/" : path.toLowerCase();
@@ -17,6 +23,7 @@ const normalizePath = (path: string) => {
 export default function TopMenu() {
   const pathname = normalizePath(usePathname());
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [language, setLanguage] = useState("عربي");
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -85,6 +92,28 @@ export default function TopMenu() {
                   <Search className="h-5 w-5" />
                   <span className="sr-only">Search</span>
                 </Button>
+                <div className="flex items-center gap-2 px-2 border-t border-gray-300 pt-4">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 px-2 text-xs text-gray-500"
+                      >
+                        <Globe className="w-4 h-4 mr-2" />
+                        {language}
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem onClick={() => setLanguage("English")}>
+                        English
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setLanguage("عربي")}>
+                        عربي
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
