@@ -24,7 +24,7 @@ export default function TopBar() {
   };
 
   return (
-    <header className="bg-[linear-gradient(135deg,_gray-100_0%,_primary/5_50%,_primary/5_100%)] hidden sm:block">
+    <header className="bg-gradient-to-r from-white from-0% via-white to-primary/25 to-100% hidden sm:block">
       <Container className="pb-0 py-0">
         <div className="flex sm:flex-row-reverse items-center gap-2 sm:gap-5 text-xs text-gray-500">
           <div className="hidden sm:flex items-center gap-2 px-2 sm:border-l-2 border-gray-300">
