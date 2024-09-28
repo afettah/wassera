@@ -1,12 +1,44 @@
+"use client";
 import Image from "next/image";
 import Container from "./components/container";
 import CustomButton from "./components/button";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function OfferSection() {
+  const { ref: inViewRef1, inView: inView1 } = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
+  const { ref: inViewRef2, inView: inView2 } = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
+
+  const leftToRightVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  const rightToLeftVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
     <Container className="py-20 relative">
       <div className="flex flex-col md:flex-row items-center">
-        <div className="md:w-1/3 relative">
+        {/* first item to animate */}
+        <motion.div
+          ref={inViewRef1}
+          className="md:w-1/3 relative"
+          initial="hidden"
+          animate={inView1 ? "visible" : "hidden"}
+          variants={leftToRightVariants}
+          transition={{ duration: 0.5 }}
+        >
           <div className="absolute inset-0 bg-[#FFA500] opacity-20 transform -skew-x-12"></div>
           <Image
             src="/placeholder.svg?height=400&width=400"
@@ -15,8 +47,17 @@ export default function OfferSection() {
             height={400}
             className="relative z-10 w-full h-auto"
           />
-        </div>
-        <div className="md:w-2/3 mt-6 md:mt-0">
+        </motion.div>
+
+        {/* second item to animate */}
+        <motion.div
+          ref={inViewRef2}
+          className="md:w-2/3 mt-6 md:mt-0"
+          initial="hidden"
+          animate={inView2 ? "visible" : "hidden"}
+          variants={rightToLeftVariants}
+          transition={{ duration: 0.5 }}
+        >
           <h3 className="text-2xl md:text-4xl"> Do you know about</h3>
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
             <span className="text-primary ">Waseera</span>{" "}
@@ -45,7 +86,7 @@ export default function OfferSection() {
               </p>
             </li>
           </ul>
-        </div>
+        </motion.div>
       </div>
       <CustomButton className="bg-primary font-bold absolute bottom-4 right-4 md:bottom-8 md:right-8">
         Learn More
