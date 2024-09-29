@@ -11,5 +11,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/(ar|en)/:path*'],
+  matcher: ['/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)'],
 };
