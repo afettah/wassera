@@ -1,5 +1,6 @@
 Todo
 
+- hedrataion error
 - I18N
 - chat boot
 - add animation

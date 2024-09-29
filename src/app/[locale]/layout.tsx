@@ -5,6 +5,7 @@ import '../globals.css';
 import TopBar from './topBar';
 import TopMenu from './topMenu';
 import { I18nProviderClient } from '@/locales/client';
+import ChatbotScript from './ChatbotScript';
 
 // Define Gotham with different weights
 const gotham = localFont({
@@ -51,6 +52,7 @@ export default function RootLayout({
           <TopBar />
           <TopMenu />
           {children}
+          <ChatbotScript />
         </body>
       </html>
     </I18nProviderClient>

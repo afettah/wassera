@@ -4,7 +4,7 @@ import { getScopedI18n } from '@/locales/server';
 import CustomButton from '../components/button';
 
 export default async function HeroSection() {
-  const heroT = await getScopedI18n('hero');
+  const heroT = await getScopedI18n('home.hero');
   return (
     <section className="w-full py-12 md:py-16 lg:py-20 xl:py-28">
       <Container>

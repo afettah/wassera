@@ -7,30 +7,7 @@ import Container from '../components/container';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-
-const cards = [
-  {
-    title: 'Why Wassera?',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
-    link: '/why-wassera',
-    image: '/images/wassera.svg',
-  },
-  {
-    title: 'Our Mission',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
-    link: '/our-mission',
-    image: '/images/mission.svg',
-  },
-  {
-    title: 'Our Vision',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
-    link: '/our-vision',
-    image: '/images/vision.svg',
-  },
-];
+import { useScopedI18n } from '@/locales/client';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -38,6 +15,27 @@ const cardVariants = {
 };
 
 export default function InfoSection() {
+  const infoT = useScopedI18n('home.info');
+  const cards = [
+    {
+      title: infoT('wassera.title'),
+      description: infoT('wassera.description'),
+      link: '/about',
+      image: '/images/wassera.svg',
+    },
+    {
+      title: infoT('mission.title'),
+      description: infoT('mission.description'),
+      link: '/about',
+      image: '/images/mission.svg',
+    },
+    {
+      title: infoT('vision.title'),
+      description: infoT('vision.description'),
+      link: '/about',
+      image: '/images/vision.svg',
+    },
+  ];
   return (
     <div className="w-full bg-gray-100 ">
       <Container className="info-section py-20 ">
@@ -55,6 +53,7 @@ export default function InfoSection() {
 
 function CardWithAnimation({ card }: { card: (typeof cards)[0] }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const globalT = useScopedI18n('global');
 
   return (
     <motion.div
@@ -78,7 +77,7 @@ function CardWithAnimation({ card }: { card: (typeof cards)[0] }) {
           <Button asChild className="w-full sm:w-auto text-xl bg-primary/10 text-primary hover:bg-primary/20">
             <div className="flex gap-3 justify-center items-center">
               <ArrowRight width={20} />
-              <Link href={card.link}>Learn more</Link>
+              <Link href={card.link}>{globalT('learnMore')}</Link>
             </div>
           </Button>
           <div className="mt-4 border-b-2 border-primary w-3/4"></div>
