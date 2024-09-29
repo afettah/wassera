@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Locale from 'intl-locale-textinfo-polyfill';
 
 import localFont from 'next/font/local';
 import '../globals.css';
@@ -30,9 +31,10 @@ export default function RootLayout({
   params: { locale: string };
   children: React.ReactNode;
 }>) {
+  const { direction: dir } = new Locale(locale).textInfo;
   return (
     <I18nProviderClient locale={locale}>
-      <html lang="en">
+      <html lang={locale} dir={dir}>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col bg-transparent `}>
           <SubContainer>
             <TopBar />

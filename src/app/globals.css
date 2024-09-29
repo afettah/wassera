@@ -15,9 +15,9 @@
     --wassera-secondary-green: #1e392a;
     --wassera-secondary-gray: #999999;
     --wassera-neutral: #ffe3ca;
+    --white: #ffffff;
+    --black: #08080a;
 
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;

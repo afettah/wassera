@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Container from '../components/container';
-import Logo from '@/app/images/logo.svg';
+import Logo from '@/app/images/logo-simple.svg';
 
 export default function Footer() {
   const footerData = {

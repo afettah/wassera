@@ -1,31 +1,41 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+
 import Link from 'next/link';
-import { Search, Menu, Globe } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import Container from '../components/container';
 import Logo from '@/app/images/logo.svg';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useState } from 'react';
+import { useCurrentLocale, useScopedI18n } from '@/locales/client';
+import { LanguageSwitcher } from './languagueSwitcher';
 
-const normalizePath = (path: string) => {
+const normalizePath = (path: string, locale?: string) => {
+  if (!path) return '/';
+
+  if (locale && (path.startsWith(`/${locale}/`) || path === `/${locale}`)) {
+    path = path.slice(locale.length + 1);
+  }
+
   const lowerPath = path === '' ? '/' : path.toLowerCase();
   return lowerPath === '/home' ? '/' : lowerPath;
 };
 
 export default function TopMenu() {
-  const pathname = normalizePath(usePathname());
+  const currentLocale = useCurrentLocale();
+  const pathname = normalizePath(usePathname(), currentLocale);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuT = useScopedI18n('menu');
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About Wassera', href: '/about' },
-    { name: 'Our Services', href: '/services' },
-    { name: 'News', href: '/news' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Contact Us', href: '/contact' },
+    { name: menuT('home'), href: '/' },
+    { name: menuT('about'), href: '/about' },
+    { name: menuT('services'), href: '/services' },
+    { name: menuT('news'), href: '/news' },
+    { name: menuT('careers'), href: '/careers' },
+    { name: menuT('contact'), href: '/contact' },
   ];
 
   return (
@@ -34,11 +44,7 @@ export default function TopMenu() {
         <header className="">
           <nav className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <div className="flex flex-col font-bold text-2xl text-gray-800 leading-none">
-                <span className="text-right">وصيــــرة</span>
-                <span>waseera</span>
-              </div>
-              <Logo className="h-12 w-12" />
+              <Logo className="w-40" />
             </Link>
 
             <div className="hidden lg:flex lg:gap-x-12 items-center">
@@ -53,10 +59,6 @@ export default function TopMenu() {
                   {item.name}
                 </Link>
               ))}
-              <Button variant="ghost" size="icon">
-                <Search className="h-5 w-5" />
-                <span className="sr-only">Search</span>
-              </Button>
             </div>
             <div></div>
 
@@ -79,23 +81,8 @@ export default function TopMenu() {
                       {item.name}
                     </Link>
                   ))}
-                  <Button variant="ghost" size="icon" className="w-fit">
-                    <Search className="h-5 w-5" />
-                    <span className="sr-only">Search</span>
-                  </Button>
                   <div className="flex items-center gap-2 px-2 border-t border-gray-300 pt-4">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="sm" className="h-8 px-2 text-xs text-gray-500">
-                          <Globe className="w-4 h-4 mr-2" />
-                          English
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem>English</DropdownMenuItem>
-                        <DropdownMenuItem>عربي</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                    <LanguageSwitcher />
                   </div>
                 </div>
               </SheetContent>

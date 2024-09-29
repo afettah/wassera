@@ -1,7 +1,6 @@
-import { Globe, Mail, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import Container from '../components/container';
-import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { LanguageSwitcher } from './languagueSwitcher';
 
 export default function TopBar() {
   const headerContacts = {
@@ -14,18 +13,7 @@ export default function TopBar() {
       <Container className="pb-0 py-0">
         <div className="flex sm:flex-row-reverse items-center gap-2 sm:gap-5 text-xs text-gray-500">
           <div className="hidden sm:flex items-center gap-2 px-2 sm:border-l-2 border-gray-300">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="h-8 px-2 text-xs text-gray-500">
-                  <Globe className="w-4 h-4 mr-2" />
-                  English
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>English</DropdownMenuItem>
-                <DropdownMenuItem>عربي</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <LanguageSwitcher />
           </div>
           <div className="flex sm:flex-row items-center gap-2 sm:gap-5">
             <a href={`mailto:${headerContacts.email}`} className="flex items-center gap-2 hover:text-primary transition-colors">
