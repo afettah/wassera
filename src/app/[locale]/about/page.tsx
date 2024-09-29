@@ -137,7 +137,7 @@ export default function AboutPage() {
               </p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {valuesData.map((value, index) => (
-                  <ValueCard key={index} {...value} />
+                  <ValueCard key={index} {...value} className={index >= 3 ? 'lg:col-span-1 lg:col-start-2' : ''} />
                 ))}
               </div>
             </div>
@@ -163,11 +163,12 @@ interface ValueCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
+  className?: string;
 }
 
-function ValueCard({ icon, title, description }: ValueCardProps) {
+function ValueCard({ icon, title, description, className }: ValueCardProps) {
   return (
-    <Card className="relative overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+    <Card className={`relative overflow-hidden group hover:shadow-lg transition-shadow duration-300 ${className}`}>
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       <CardHeader>
         <CardTitle className="flex items-center space-x-3 text-xl">
