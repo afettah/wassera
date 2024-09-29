@@ -10,6 +10,9 @@
 
 @layer base {
   :root {
+    --font-gotham: 'Gotham', sans-serif;
+    --font-ge-ss: 'GE SS', sans-serif;
+
     --wassera-primary-green: #33cc66;
     --wassera-primary-orange: #ffcc99;
     --wassera-secondary-green: #1e392a;
@@ -77,5 +80,13 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  body {
+    font-family: var(--font-gotham);
+  }
+
+  [lang='ar'] body {
+    font-family: var(--font-ge-ss);
   }
 }

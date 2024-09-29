@@ -1,21 +1,31 @@
 import type { Metadata } from 'next';
 import Locale from 'intl-locale-textinfo-polyfill';
-
 import localFont from 'next/font/local';
 import '../globals.css';
 import TopBar from './topBar';
 import TopMenu from './topMenu';
 import { I18nProviderClient } from '@/locales/client';
 
-const geistSans = localFont({
-  src: '../fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
+// Define Gotham with different weights
+const gotham = localFont({
+  src: [
+    { path: '../fonts/Gotham-Light.otf', weight: '300', style: 'normal' },
+    { path: '../fonts/Gotham-Book.otf', weight: '400', style: 'normal' },
+    { path: '../fonts/Gotham-Medium.otf', weight: '500', style: 'normal' },
+    { path: '../fonts/Gotham-Bold.otf', weight: '700', style: 'normal' },
+    { path: '../fonts/Gotham-Ultra.otf', weight: '800', style: 'normal' },
+  ],
+  variable: '--font-gotham',
 });
-const geistMono = localFont({
-  src: '../fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+
+// Define GE SS with different weights
+const geSS = localFont({
+  src: [
+    { path: '../fonts/GE SS Light.otf', weight: '300', style: 'normal' },
+    { path: '../fonts/GE SS Medium.otf', weight: '500', style: 'normal' },
+    { path: '../fonts/GE SS Bold.otf', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-ge-ss',
 });
 
 export const metadata: Metadata = {
@@ -31,13 +41,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const { direction: dir } = new Locale(locale).textInfo;
+
+  const isArabic = locale?.startsWith('ar');
+
   return (
     <I18nProviderClient locale={locale}>
       <html lang={locale} dir={dir}>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col bg-transparent `}>
+        <body className={`${isArabic ? geSS.variable : gotham.variable} antialiased flex flex-col bg-transparent`}>
           <TopBar />
           <TopMenu />
-
           {children}
         </body>
       </html>
