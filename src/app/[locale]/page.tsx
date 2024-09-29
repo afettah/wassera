@@ -1,5 +1,4 @@
 import BackgroundImageContainer from '../components/backgroundImageContainer';
-import Footer from './Footer';
 import HeroSection from './heroSection';
 import InfoSection from './infoSection';
 import OfferSection from './OfferSection';
@@ -16,7 +15,7 @@ export default function Home() {
       <OfferSection />
       <Statistics />
       <WaseeraPartnerships />
-      <Footer />
+   
     </div>
   );
 }
