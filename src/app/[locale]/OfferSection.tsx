@@ -34,7 +34,7 @@ export default function OfferSection() {
         {/* first item to animate */}
         <motion.div
           ref={inViewRef1}
-          className="md:w-1/3 relative"
+          className="md:w-1/2 relative"
           initial="hidden"
           animate={inView1 ? 'visible' : 'hidden'}
           variants={leftToRightVariants}
@@ -48,7 +48,7 @@ export default function OfferSection() {
         {/* second item to animate */}
         <motion.div
           ref={inViewRef2}
-          className="md:w-2/3 mt-6 md:mt-0"
+          className="md:w-1/2 mt-6 md:mt-0"
           initial="hidden"
           animate={inView2 ? 'visible' : 'hidden'}
           variants={rightToLeftVariants}
