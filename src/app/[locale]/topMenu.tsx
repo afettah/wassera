@@ -39,7 +39,7 @@ export default function TopMenu() {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-white from-0% via-white to-primary/25 to-100%">
+    <div>
       <Container className="sm:px-4 py-1  ">
         <header className="">
           <nav className="flex items-center justify-between">

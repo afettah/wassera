@@ -5,7 +5,6 @@ import localFont from 'next/font/local';
 import '../globals.css';
 import TopBar from './topBar';
 import TopMenu from './topMenu';
-import SubContainer from '../components/sub-container';
 import { I18nProviderClient } from '@/locales/client';
 
 const geistSans = localFont({
@@ -36,10 +35,8 @@ export default function RootLayout({
     <I18nProviderClient locale={locale}>
       <html lang={locale} dir={dir}>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col bg-transparent `}>
-          <SubContainer>
-            <TopBar />
-            <TopMenu />
-          </SubContainer>
+          <TopBar />
+          <TopMenu />
 
           {children}
         </body>

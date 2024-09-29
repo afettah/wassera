@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 
 interface CustomButtonProps {
@@ -20,7 +21,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({ className, children, varian
   };
 
   return (
-    <Button size={size} className={`${variantClasses[variant]} font-bold py-2 px-4 rounded ${sizeClasses[size]} ${className}`}>
+    <Button size={size} className={cn(`${variantClasses[variant]} font-bold py-2 px-4 rounded ${sizeClasses[size]} `, className)}>
       {children}
     </Button>
   );

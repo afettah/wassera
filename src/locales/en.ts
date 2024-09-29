@@ -8,8 +8,9 @@ export default {
     contact: 'Contact Us',
   },
   hero: {
-    title: 'Maximize Your Assets with Smart Financial Solutions',
-    description: 'Simplifying mortgage, investment, and savings to unlock the full potential of your assets through collateralized mortgage loans.',
+    title: 'Unlock Effortless Mortgage Solutions',
+    description:
+      'Take control of your financial future with tailored mortgage, investment, and savings services designed to maximize the value of your assets through easy-to-access collateralized loans.',
     button: {
       started: 'Get Started',
       more: 'Learn More',

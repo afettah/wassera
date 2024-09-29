@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Animated SVG with slow complex movements -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+  y="0px" viewBox="0 0 731.4 310.7" style="enable-background:new 0 0 731.4 310.7;" xml:space="preserve">
+  <style type="text/css">
+    .st0 {
+      fill: #4BB859;
+    }
+
+    .st1 {
+      fill: #FDC891;
+    }
+
+    /* Elliptical movement */
+    @keyframes ellipseMove {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      25% {
+        transform: translate(30px, -15px);
+      }
+
+      50% {
+        transform: translate(60px, 0);
+      }
+
+      75% {
+        transform: translate(30px, 15px);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    /* Appear from top and disappear from bottom */
+    @keyframes appearFromTop {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      50% {
+        transform: translateY(150px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(-150px);
+        opacity: 1;
+      }
+    }
+
+    /* Simple horizontal movement */
+    @keyframes horizontalMove {
+      0% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(20px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* Scaling */
+    @keyframes scaleChange {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Applying animations to the paths */
+    .path1 {
+      animation: ellipseMove 35s infinite ease-in-out;
+    }
+
+    .path2 {
+      animation: appearFromTop 40s infinite ease-in-out;
+    }
+
+    .path3 {
+      animation: ellipseMove 40s infinite ease-in-out;
+    }
+
+    .path4 {
+      animation: appearFromTop 45s infinite ease-in-out;
+    }
+
+    .path5 {
+      animation: scaleChange 42s infinite ease-in-out;
+    }
+
+    .path6 {
+      animation: horizontalMove 35s infinite ease-in-out;
+    }
+
+    .path7 {
+      animation: scaleChange 32s infinite ease-in-out;
+    }
+
+
+
+    .path9 {
+      animation: ellipseMove 18s infinite ease-in-out;
+    }
+  </style>
+  <!-- Shapes -->
+  <path class="st0 path1" d="M797,174.7l-52.8-86.3l-24-39.2c-2.1-3.5-7.5-3.5-9.6,0l-24,39.2l0,0l0,0l-28.8,47.1l-24,39.2
+	c-2.1,3.5,0.5,7.8,4.8,7.8h153.5C796.4,182.6,799.1,178.2,797,174.7z" />
+  <path class="st0 path2" d="M563.2,246.7l-52.8-86.3l-24-39.2c-2.1-3.5-7.5-3.5-9.6,0l-24,39.2l0,0l0,0l-28.8,47.1l-24,39.2
+	c-2.1,3.5,0.5,7.8,4.8,7.8h153.4C562.6,254.5,565.3,250.1,563.2,246.7L563.2,246.7z" />
+  <path class="st0 path3" d="M404.6,30.5L303.7,37l-45.9,2.9c-4.1,0.3-6.6,5-4.5,8.5l23.5,39.5l0,0l0,0l28.2,47.4l23.5,39.5
+	c2.1,3.5,7.2,3.2,9.2-0.6l71.5-135.8C411.3,34.6,408.7,30.2,404.6,30.5z" />
+  <path class="st0 path4" d="M69.3,283.8l-19.5-33.1L41,235.6c-0.8-1.3-2.8-1.3-3.5,0l-8.8,15.1l0,0l0,0L18,268.8l-8.8,15.1
+	c-0.8,1.3,0.2,3,1.8,3h56.6C69.1,286.9,70.1,285.2,69.3,283.8L69.3,283.8z" />
+  <path class="st1 path5" d="M595.7,170.6L569,199.4c-2,2.2-2.7,5.3-1.8,8.1l14.8,46.5l0,0l13.6,42.6c1.2,3.8,6,4.9,8.7,2.1l26.7-28.8
+	c2-2.2,2.7-5.3,1.8-8.1L618,215.3l-13.6-42.6C603.2,168.9,598.4,167.7,595.7,170.6z" />
+  <path class="st0 path6" d="M206.3,208.8L134.1,79.3l-32.8-58.9c-2.9-5.2-10.2-5.2-13.1,0L55.3,79.3l0,0l0,0L15.9,150l-32.8,58.9
+	c-2.9,5.2,0.7,11.8,6.6,11.8h210.1C205.6,220.6,209.3,214.1,206.3,208.8L206.3,208.8z" />
+  <path class="st1 path7" d="M387.1,221.8h-19c-1.4,0-2.8,0.8-3.5,2.2l-11.7,22.1l0,0l-10.7,20.3c-1,1.8,0.2,4.1,2.1,4.1h19
+	c1.4,0,2.8-0.8,3.5-2.2l11.7-22.1l10.7-20.3C390.1,224.1,389,221.8,387.1,221.8z" />
+  <path class="st0 path8" d="M326.6,249.2l-15-20.9l-6.8-9.5c-0.6-0.8-2.1-0.8-2.7,0l-6.8,9.5l0,0l0,0l-8.2,11.4l-6.8,9.5
+	c-0.6,0.8,0.2,1.9,1.4,1.9h43.7C326.4,251.1,327.2,250.1,326.6,249.2L326.6,249.2z" />
+  <path class="st1 path9" d="M543.5,16.5h-39.3c-3,0-5.7,1.6-7.2,4.2l-24,42.5l0,0l-22,38.9c-2,3.5,0.5,7.8,4.4,7.8h39.3
+	c3,0,5.7-1.6,7.2-4.2l24-42.5l22-38.9C549.9,20.8,547.5,16.5,543.5,16.5z" />
+</svg>

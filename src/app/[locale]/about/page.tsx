@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lightbulb, Target, Wrench, Users, Rocket, Heart, Zap, TrendingUp } from 'lucide-react';
 import Container from '../../components/container';
-import SubContainer from '../../components/sub-container';
+import BackgroundImageContainer from '../../components/backgroundImageContainer';
 
 const visionMissionData = [
   {
@@ -89,7 +89,7 @@ const servicesData = [
 
 export default function AboutPage() {
   return (
-    <SubContainer className="overflow-hidden">
+    <BackgroundImageContainer className="overflow-hidden">
       <Container className="min-h-screen">
         <div className="container mx-auto px-4 space-y-24">
           <header className="relative text-center py-20">
@@ -155,7 +155,7 @@ export default function AboutPage() {
           </section>
         </div>
       </Container>
-    </SubContainer>
+    </BackgroundImageContainer>
   );
 }
 

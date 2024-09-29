@@ -27,7 +27,9 @@ export default function OfferSection() {
   };
 
   return (
-    <Container className="py-20 relative">
+    <Container className="py-20 relative overflow-hidden">
+      {' '}
+      {/* Added overflow-hidden */}
       <div className="flex flex-col md:flex-row items-center">
         {/* first item to animate */}
         <motion.div
@@ -38,7 +40,8 @@ export default function OfferSection() {
           variants={leftToRightVariants}
           transition={{ duration: 0.5 }}
         >
-          <div className="absolute inset-0 bg-[#FFA500] opacity-20 transform -skew-x-12"></div>
+          <div className="absolute inset-0 bg-[#FFA500] opacity-20 transform -skew-x-12 w-full h-full"></div>{' '}
+          {/* Made sure background spans full width/height */}
           <Image src="" alt="Person using a laptop" width={400} height={400} className="relative z-10 w-full h-auto" />
         </motion.div>
 
@@ -55,7 +58,9 @@ export default function OfferSection() {
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
             <span className="text-primary ">Waseera</span> <span className="text-gray-800">Offers !?</span>
           </h2>
-          <ul className="space-y-3 md:pl-32 mb-6 text-base md:text-lg">
+          <ul className="space-y-3 md:pl-20 mb-6 text-base md:text-lg">
+            {' '}
+            {/* Reduced padding on small screens */}
             <li className="flex items-start">
               <span className="text-primary mr-2">■</span>
               <p className="text-gray-600">
@@ -73,7 +78,11 @@ export default function OfferSection() {
           </ul>
         </motion.div>
       </div>
-      <CustomButton className="bg-primary font-bold absolute bottom-4 right-4 md:bottom-8 md:right-8">Learn More</CustomButton>
+      <CustomButton className="bg-primary font-bold absolute bottom-4 right-4 md:bottom-8 md:right-8 z-20">
+        {' '}
+        {/* Added z-index to ensure visibility */}
+        Learn More
+      </CustomButton>
     </Container>
   );
 }

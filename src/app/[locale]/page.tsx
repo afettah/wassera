@@ -1,4 +1,4 @@
-import SubContainer from '../components/sub-container';
+import BackgroundImageContainer from '../components/backgroundImageContainer';
 import Footer from './Footer';
 import HeroSection from './heroSection';
 import InfoSection from './infoSection';
@@ -9,9 +9,9 @@ import Statistics from './statistics';
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <SubContainer>
+      <BackgroundImageContainer>
         <HeroSection />
-      </SubContainer>
+      </BackgroundImageContainer>
       <InfoSection />
       <OfferSection />
       <Statistics />
