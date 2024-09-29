@@ -42,7 +42,7 @@ export default function OfferSection() {
         >
           <div className="absolute inset-0 bg-[#FFA500] opacity-20 transform -skew-x-12 w-full h-full"></div>{' '}
           {/* Made sure background spans full width/height */}
-          <Image src="" alt="Person using a laptop" width={400} height={400} className="relative z-10 w-full h-auto" />
+          <Image src="/images/offers.png" alt="Person using a laptop" width={400} height={400} className="relative z-10 w-full h-auto" />
         </motion.div>
 
         {/* second item to animate */}
