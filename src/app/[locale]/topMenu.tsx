@@ -1,37 +1,31 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { Search, Menu, Globe } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import Container from "./components/container";
-import Logo from "@/app/images/logo.svg";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { Search, Menu, Globe } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
+import Container from '../components/container';
+import Logo from '@/app/images/logo.svg';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { useState } from 'react';
 
 const normalizePath = (path: string) => {
-  const lowerPath = path === "" ? "/" : path.toLowerCase();
-  return lowerPath === "/home" ? "/" : lowerPath;
+  const lowerPath = path === '' ? '/' : path.toLowerCase();
+  return lowerPath === '/home' ? '/' : lowerPath;
 };
 
 export default function TopMenu() {
   const pathname = normalizePath(usePathname());
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("عربي");
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About Wassera", href: "/about" },
-    { name: "Our Services", href: "/services" },
-    { name: "News", href: "/news" },
-    { name: "Careers", href: "/careers" },
-    { name: "Contact Us", href: "/contact" },
+    { name: 'Home', href: '/' },
+    { name: 'About Wassera', href: '/about' },
+    { name: 'Our Services', href: '/services' },
+    { name: 'News', href: '/news' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   return (
@@ -53,9 +47,7 @@ export default function TopMenu() {
                   key={item.name}
                   href={item.href}
                   className={`font-semibold leading-6 ${
-                    pathname === item.href
-                      ? "text-primary border-b-2 border-primary"
-                      : "text-gray-900"
+                    pathname === item.href ? 'text-primary border-b-2 border-primary' : 'text-gray-900'
                   } hover:text-primary`}
                 >
                   {item.name}
@@ -81,11 +73,7 @@ export default function TopMenu() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`text-lg font-semibold ${
-                        pathname === item.href
-                          ? "text-primary"
-                          : "text-gray-900"
-                      } hover:text-primary`}
+                      className={`text-lg font-semibold ${pathname === item.href ? 'text-primary' : 'text-gray-900'} hover:text-primary`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -98,24 +86,14 @@ export default function TopMenu() {
                   <div className="flex items-center gap-2 px-2 border-t border-gray-300 pt-4">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="h-8 px-2 text-xs text-gray-500"
-                        >
+                        <Button variant="ghost" size="sm" className="h-8 px-2 text-xs text-gray-500">
                           <Globe className="w-4 h-4 mr-2" />
-                          {language}
+                          English
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem
-                          onClick={() => setLanguage("English")}
-                        >
-                          English
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setLanguage("عربي")}>
-                          عربي
-                        </DropdownMenuItem>
+                        <DropdownMenuItem>English</DropdownMenuItem>
+                        <DropdownMenuItem>عربي</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>

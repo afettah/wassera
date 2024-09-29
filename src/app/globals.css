@@ -10,6 +10,12 @@
 
 @layer base {
   :root {
+    --wassera-primary-green: #33cc66;
+    --wassera-primary-orange: #ffcc99;
+    --wassera-secondary-green: #1e392a;
+    --wassera-secondary-gray: #999999;
+    --wassera-neutral: #ffe3ca;
+
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;

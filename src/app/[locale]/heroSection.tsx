@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Container from "./components/container";
-import CustomButton from "./components/button";
+import Image from 'next/image';
+import Container from '../components/container';
+import CustomButton from '../components/button';
 
 export default function HeroSection() {
   return (
@@ -17,13 +17,7 @@ export default function HeroSection() {
           </div>
 
           <div className="w-full lg:w-3/5 flex justify-center lg:justify-end">
-            <Image
-              src="/images/hero.png"
-              alt="Hero Image"
-              width={1000}
-              height={1000}
-              className="max-w-full h-auto"
-            />
+            <Image src="/images/hero.png" alt="Hero Image" width={1000} height={1000} className="max-w-full h-auto" />
           </div>
         </div>
       </Container>

@@ -1,38 +1,37 @@
-import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
-import Container from "./components/container";
-import Logo from "@/app/images/logo.svg";
+import Link from 'next/link';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import Container from '../components/container';
+import Logo from '@/app/images/logo.svg';
 
 export default function Footer() {
   const footerData = {
     logo: {
-      src: "/placeholder.svg?height=50&width=150",
-      alt: "Waseera Logo",
+      src: '',
+      alt: 'Waseera Logo',
       width: 150,
       height: 50,
     },
-    description:
-      "The leading fintech solution that uses nft, ai, and blockchain technologies to unlock the value of untapped equities.",
+    description: 'The leading fintech solution that uses nft, ai, and blockchain technologies to unlock the value of untapped equities.',
     contacts: [
       {
-        type: "phone",
-        href: "tel:+966598577775",
+        type: 'phone',
+        href: 'tel:+966598577775',
         icon: Phone,
-        text: "+966 59 857 7775",
+        text: '+966 59 857 7775',
       },
       {
-        type: "email",
-        href: "mailto:info@waseera.com.sa",
+        type: 'email',
+        href: 'mailto:info@waseera.com.sa',
         icon: Mail,
-        text: "info@waseera.com.sa",
+        text: 'info@waseera.com.sa',
       },
       {
-        type: "address",
+        type: 'address',
         icon: MapPin,
-        text: "7134 Al-Rayyan District, Al-Nafal District,\nRiyadh 13312 Kingdom of Saudi Arabia",
+        text: '7134 Al-Rayyan District, Al-Nafal District,\nRiyadh 13312 Kingdom of Saudi Arabia',
       },
     ],
-    links: ["Terms", "Privacy", "Security"],
+    links: ['Terms', 'Privacy', 'Security'],
   };
 
   return (
@@ -55,9 +54,7 @@ export default function Footer() {
               </div>
               <Logo className="h-15 w-12" />
             </Link>
-            <p className="text- max-w-md leading-relaxed">
-              {footerData.description}
-            </p>
+            <p className="text- max-w-md leading-relaxed">{footerData.description}</p>
           </div>
 
           <div>
@@ -70,15 +67,12 @@ export default function Footer() {
                 <div key={index} className="flex items-center group">
                   <contact.icon className="w-5 h-5 mr-3 text-[#ba9a71] group-hover:text-white transition-colors duration-200" />
                   {contact.href ? (
-                    <a
-                      href={contact.href}
-                      className="group-hover:text-primary transition-colors duration-200"
-                    >
+                    <a href={contact.href} className="group-hover:text-primary transition-colors duration-200">
                       {contact.text}
                     </a>
                   ) : (
                     <span className="text-sm">
-                      {contact.text.split("\n").map((line, i) => (
+                      {contact.text.split('\n').map((line, i) => (
                         <div key={i}>
                           {line}
                           <br />
@@ -97,11 +91,7 @@ export default function Footer() {
           <p className=" ">All Rights Reserved © Waseera</p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
             {footerData.links.map((item) => (
-              <Link
-                key={item}
-                href={`/${item.toLowerCase()}`}
-                className="hover:text-white transition-colors duration-200 relative group"
-              >
+              <Link key={item} href={`/${item.toLowerCase()}`} className="hover:text-white transition-colors duration-200 relative group">
                 {item}
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
               </Link>
