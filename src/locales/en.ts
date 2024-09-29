@@ -37,5 +37,12 @@ export default {
           'Our main product Is a user-friendly platform that unlocks the value of assets and offers investments and savings services through collateralized mortgage loans.',
       },
     },
+    offers: {
+      title: {
+        line1: 'Do you know about',
+        line2: '$wassera Offers ?',
+      },
+      list: [],
+    },
   },
 } as const;

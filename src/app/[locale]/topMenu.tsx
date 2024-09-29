@@ -44,7 +44,7 @@ export default function TopMenu() {
         <header className="">
           <nav className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <Logo className="w-40" />
+              <Logo className="w-40 text-logo-foreground-secondary" />
             </Link>
 
             <div className="hidden lg:flex lg:gap-x-12 items-center">

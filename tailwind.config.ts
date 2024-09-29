@@ -17,6 +17,11 @@ const config: Config = {
           DEFAULT: 'var(--wassera-primary-orange)',
           foreground: 'var(--white)',
         },
+        logo: {
+          foreground: {
+            secondary: 'var(--wassera-secondary-green)',
+          },
+        },
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
