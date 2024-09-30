@@ -34,7 +34,7 @@ export default function TopMenu() {
     { name: menuT('about'), href: '/about' },
     { name: menuT('services'), href: '/services' },
     { name: menuT('news'), href: '/news' },
-    { name: menuT('careers'), href: '/careers' },
+    { name: menuT('careers'), href: '/' },
     { name: menuT('contact'), href: '/contact' },
   ];
 

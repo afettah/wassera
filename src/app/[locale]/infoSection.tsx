@@ -51,20 +51,6 @@ export default function InfoSection() {
           </div>
         </Container>
       </div>
-      <svg
-        id="Layer_1"
-        className="absolute bottom-2 left-20 opacity-40 "
-        data-name="Layer 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 98.32 93.4"
-        width={120}
-      >
-        <path
-          style={{ fill: '#FDC891' }}
-          className="fill-current"
-          d="M93.21,93.4h-39.3c-3,0-5.7-1.6-7.2-4.2l-24-42.5h0L.71,7.8C-1.29,4.3,1.21,0,5.11,0h39.3c3,0,5.7,1.6,7.2,4.2l24,42.5,22,38.9c2,3.5-.4,7.8-4.4,7.8Z"
-        />
-      </svg>
     </div>
   );
 }
