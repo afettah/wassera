@@ -1,34 +1,34 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wrench } from "lucide-react";
+import { ChartLine, CurrencyIcon, Lock, Wallet } from "lucide-react";
 
 const servicesData = [
   {
     title: "Mortgage Split",
     description:
       "Offers a tailored financing solution by dividing your mortgage into separate portions with varying terms, including fixed and variable rates.",
-    icon: <Wrench className="h-8 w-8" />,
+    icon: <CurrencyIcon className="h-8 w-8" />,
     imageSrc: "/images/mortage.jpeg",
   },
   {
     title: "Investments",
     description:
       "Strategic opportunity to grow customers' financial inclusion, capitalizing on untapped equities with investment options tailored to your financial goals and risk tolerance.",
-    icon: <Wrench className="h-8 w-8" />,
+    icon: <ChartLine className="h-8 w-8" />,
     imageSrc: "/images/investment.png",
   },
   {
     title: "Asset-Backed Loan",
     description:
       "Provides funding brokerage services secured by collateral, offering flexible financing options for various needs and situations.",
-    icon: <Wrench className="h-8 w-8" />,
+    icon: <Lock className="h-8 w-8" />,
     imageSrc: "/images/loan.jpeg",
   },
   {
     title: "Savings",
     description:
       "Flexible savings solutions designed to help you efficiently accumulate and manage your funds, ensuring your money works towards achieving your long-term financial objectives.",
-    icon: <Wrench className="h-8 w-8" />,
+    icon: <Wallet className="h-8 w-8" />,
     imageSrc: "/images/savings.jpeg",
   },
 ];

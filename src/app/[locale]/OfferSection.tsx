@@ -63,7 +63,7 @@ export default function OfferSection() {
             {Array.from({ length: offerCount }).map((_, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-primary mr-2">■</span>
-                <p>{offertT(`list.${i}`)}</p>
+                <p>{offertT(`list.${i as 0 | 1 | 2 | 3 | 4 | 5}`)}</p>
               </li>
             ))}
           </ul>

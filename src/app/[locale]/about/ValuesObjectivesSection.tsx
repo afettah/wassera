@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Rocket, Heart, Zap, TrendingUp } from "lucide-react";
+import { MagicCard } from "@/components/ui/magic-card"; // Adjust the import path as necessary
 
 const valuesData = [
   {
@@ -64,7 +65,7 @@ export default function ValuesObjectivesSection() {
             ))}
           </div>
           <div className="flex justify-center items-center gap-8">
-            <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 lg:mx-36">
+            <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 lg:mx-44">
               {valuesData.slice(3).map((value, index) => (
                 <ValueCard key={index} {...value} />
               ))}
@@ -85,8 +86,10 @@ interface ValueCardProps {
 
 function ValueCard({ icon, title, description, className }: ValueCardProps) {
   return (
-    <Card
-      className={`relative overflow-hidden group hover:shadow-lg transition-shadow duration-300 ${className}`}
+    <MagicCard
+      className={`relative overflow-hidden  group hover:shadow-lg transition-shadow duration-300 ${className}`}
+      gradientColor="#33cc66"
+      gradientOpacity={0.3}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       <CardHeader>
@@ -102,6 +105,6 @@ function ValueCard({ icon, title, description, className }: ValueCardProps) {
           {description}
         </p>
       </CardContent>
-    </Card>
+    </MagicCard>
   );
 }
