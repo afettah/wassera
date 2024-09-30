@@ -1,6 +1,9 @@
+"use client"
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartLine, CurrencyIcon, Lock, Wallet } from "lucide-react";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
 
 const servicesData = [
   {
@@ -34,6 +37,17 @@ const servicesData = [
 ];
 
 export default function ServicesSection() {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start("visible");
+  }, [controls]);
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section aria-labelledby="services-heading" className="relative">
       <h2
@@ -44,7 +58,15 @@ export default function ServicesSection() {
       </h2>
       <div className="grid md:grid-cols-2 gap-12">
         {servicesData.map((service, index) => (
-          <ServiceCard key={index} {...service} />
+          <motion.div
+            key={index}
+            initial="hidden"
+            animate={controls}
+            variants={cardVariants}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+          >
+            <ServiceCard {...service} />
+          </motion.div>
         ))}
       </div>
     </section>
@@ -65,8 +87,8 @@ function ServiceCard({ icon, title, description, imageSrc }: ServiceCardProps) {
         <Image
           src={imageSrc}
           alt={title}
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
           className="group-hover:scale-110 transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
