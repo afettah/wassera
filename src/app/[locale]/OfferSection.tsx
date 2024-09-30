@@ -4,6 +4,7 @@ import Container from '../components/container';
 import CustomButton from '../components/button';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useScopedI18n } from '@/locales/client';
 
 export default function OfferSection() {
   const { ref: inViewRef1, inView: inView1 } = useInView({
@@ -25,13 +26,14 @@ export default function OfferSection() {
     hidden: { opacity: 0, x: 100 },
     visible: { opacity: 1, x: 0 },
   };
+  const offertT = useScopedI18n('home.offers');
+  const globalT = useScopedI18n('global');
+  const offerCount = 6;
 
   return (
     <Container className="py-20 relative overflow-hidden">
       {' '}
-      {/* Added overflow-hidden */}
       <div className="flex flex-col md:flex-row items-center">
-        {/* first item to animate */}
         <motion.div
           ref={inViewRef1}
           className="md:w-1/2 relative"
@@ -41,11 +43,9 @@ export default function OfferSection() {
           transition={{ duration: 0.5 }}
         >
           <div className="absolute inset-0 bg-[#FFA500] opacity-20 transform -skew-x-12 w-full h-full"></div>{' '}
-          {/* Made sure background spans full width/height */}
           <Image src="/images/offers.png" alt="Person using a laptop" width={400} height={400} className="relative z-10 w-full h-auto" />
         </motion.div>
 
-        {/* second item to animate */}
         <motion.div
           ref={inViewRef2}
           className="md:w-1/2 mt-6 md:mt-0"
@@ -54,35 +54,24 @@ export default function OfferSection() {
           variants={rightToLeftVariants}
           transition={{ duration: 0.5 }}
         >
-          <h3 className="text-2xl md:text-4xl"> Do you know about</h3>
+          <h3 className="text-2xl md:text-4xl">{offertT('title.line1')}</h3>
           <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="text-primary ">Waseera</span> <span className="text-gray-800">Offers !?</span>
+            <span className="text-primary ">Waseera</span> <span className="text-gray-800">{offertT('title.line2')}</span>
           </h2>
           <ul className="space-y-3 md:pl-20 mb-6 text-base md:text-lg">
             {' '}
-            {/* Reduced padding on small screens */}
-            <li className="flex items-start">
-              <span className="text-primary mr-2">■</span>
-              <p className="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary mr-2">■</span>
-              <p className="text-gray-600">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary mr-2">■</span>
-              <p className="text-gray-600">Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </li>
+            {Array.from({ length: offerCount }).map((_, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-primary mr-2">■</span>
+                <p>{offertT(`list.${i}`)}</p>
+              </li>
+            ))}
           </ul>
         </motion.div>
       </div>
-      <CustomButton className="bg-primary font-bold absolute bottom-4 right-4 md:bottom-8 md:right-8 z-20">
-        {' '}
-        {/* Added z-index to ensure visibility */}
-        Learn More
-      </CustomButton>
+      <div className="flex justify-center">
+        <CustomButton className="bg-primary font-bold z-20 md:bottom-8 md:right-8">{globalT('getStarted')}</CustomButton>
+      </div>
     </Container>
   );
 }

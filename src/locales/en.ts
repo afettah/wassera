@@ -40,9 +40,16 @@ export default {
     offers: {
       title: {
         line1: 'Do you know about',
-        line2: '$wassera Offers ?',
+        line2: 'Offers ?',
       },
-      list: [],
+      list: [
+        'We leverage cutting-edge technology to enable both individuals and corporations to monetize their untapped assets through innovative financial products.',
+        'Providing fast, secure, and accessible financial serices. Allowing customers to unlock the equity in their assets, bypassing the bureaucratic hurdles of traditional banking.',
+        'lower customers burden ratio (income Deduction )',
+        'Higher Credit Scoring',
+        'Augment customers solvency',
+        'Clear Off Balance Sheet liabilities for Assets capitalization',
+      ],
     },
   },
 } as const;
