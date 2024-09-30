@@ -38,16 +38,33 @@ export default function InfoSection() {
     },
   ];
   return (
-    <div className="w-full bg-gray-100 ">
-      <Container className="info-section py-20 ">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cards.map((card) => (
-              <CardWithAnimation key={card.title} card={card} />
-            ))}
+    <div className="w-full bg-gray-100 relative">
+      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-background"></div> {/* Half background at the bottom */}
+      <div className="relative z-10">
+        <Container className="info-section py-20">
+          <div className="container mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {cards.map((card) => (
+                <CardWithAnimation key={card.title} card={card} />
+              ))}
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
+      <svg
+        id="Layer_1"
+        className="absolute bottom-2 left-20 opacity-40 "
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 98.32 93.4"
+        width={120}
+      >
+        <path
+          style={{ fill: '#FDC891' }}
+          className="fill-current"
+          d="M93.21,93.4h-39.3c-3,0-5.7-1.6-7.2-4.2l-24-42.5h0L.71,7.8C-1.29,4.3,1.21,0,5.11,0h39.3c3,0,5.7,1.6,7.2,4.2l24,42.5,22,38.9c2,3.5-.4,7.8-4.4,7.8Z"
+        />
+      </svg>
     </div>
   );
 }
@@ -71,14 +88,18 @@ function CardWithAnimation({ card }: { card: Card }) {
       variants={cardVariants}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <MagicCard className="flex flex-col justify-between  shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] text-center" gradientColor='#33cc66' gradientOpacity={0.3}>
+      <MagicCard
+        className="flex flex-col justify-between h-96 shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] text-center"
+        gradientColor="#33cc66"
+        gradientOpacity={0.3}
+      >
         <CardHeader className="flex items-center justify-center p-2">
           <Image src={card.image} alt={card.title} width={170} height={170} className="w-full h-32 object-contain" />
         </CardHeader>
-        <CardContent className="flex-grow flex flex-col justify-between">
-          <div>
+        <CardContent className="flex-grow flex flex-col">
+          <div className="flex-grow">
             <CardTitle className="text-xl mb-4 text-center">{card.title}</CardTitle>
-            <p className="text-gray-700 text-base">{card.description}</p>
+            <p className="text-gray-700 text-base line-clamp-3">{card.description}</p>
           </div>
         </CardContent>
         <CardFooter className="mt-auto flex flex-col items-center pb-0">

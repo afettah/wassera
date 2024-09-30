@@ -32,7 +32,6 @@ export default function OfferSection() {
 
   return (
     <Container className="py-20 relative overflow-hidden">
-      {' '}
       <div className="flex flex-col md:flex-row items-center">
         <motion.div
           ref={inViewRef1}
