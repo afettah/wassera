@@ -28,7 +28,7 @@ export default async function HeroSection() {
               alt="Hero"
               className="mx-auto overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
               height="800"
-              src="/images/hero.png"
+              src="/images/hero2.png"
               width="500"
             />
           </div>
