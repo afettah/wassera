@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Lightbulb,
-  Target,
   Wrench,
   Users,
   Rocket,
@@ -12,33 +10,7 @@ import {
 } from "lucide-react";
 import Container from "../../components/container";
 import BackgroundImageContainer from "../../components/backgroundImageContainer";
-import { MagicCard } from "@/components/ui/magic-card";
 
-const visionMissionData = [
-  {
-    title: "Our Vision",
-    description:
-      "To be the first choice in the debt industry for monetizing locked capital and untapped assets, revolutionizing financial accessibility for all.",
-    icon: <Lightbulb className="h-8 w-8" />,
-    bgClass: "bg-primary",
-    textClass: "text-primary-foreground",
-
-    decorationClass: "bg-primary-foreground",
-    decorationPosition:
-      "top-0 right-0 w-32 h-32 -translate-y-16 translate-x-16",
-  },
-  {
-    title: "Our Mission",
-    description:
-      "To optimize the use of technological advances, providing new opportunities to give citizens and market participants access to untapped assets and financial growth.",
-    icon: <Target className="h-8 w-8" />,
-    bgClass: "bg-secondary",
-    textClass: "text-",
-    decorationClass: "bg-secondary-foreground",
-    decorationPosition:
-      "bottom-0 left-0 w-32 h-32 translate-y-16 -translate-x-16",
-  },
-];
 
 const valuesData = [
   {
@@ -128,38 +100,7 @@ export default function AboutPage() {
             </div>
           </header>
 
-          <section
-            aria-labelledby="vision-mission-heading"
-            className="grid md:grid-cols-2 gap-12"
-          >
-            {visionMissionData.map((item, index) => (
-              <MagicCard
-                key={index}
-                className={`${item.bgClass} ${item.textClass} overflow-hidden`}
-                gradientColor={index === 0 ? "#ffffff" : "#33cc66"}
-                gradientOpacity={0.4}
-              >
-                <div
-                  className={`absolute ${item.decorationPosition} ${item.decorationClass} opacity-10 rounded-full`}
-                ></div>
-                <CardHeader className="relative">
-                  <CardTitle className="flex items-center space-x-2 text-2xl">
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </CardTitle>
-                  <Triangle className="absolute top-0 right-0 w-8 h-8 transform rotate-45 translate-x-1/2 -translate-y-1/2" />
-                  <Triangle className="absolute bottom-0 left-4 w-6 h-6 transform -rotate-12" />
-                </CardHeader>
-                <CardContent className="relative">
-                  <p className="text-lg leading-relaxed">{item.description}</p>
-                  <Triangle className={`absolute top-1/2 ${item.decorationClass} opacity-10 right-4 w-6 h-6 transform rotate-90 translate-y-1/2`} />
-                  <Triangle className={`absolute top-1/4 ${item.decorationClass} opacity-10 left-1/4 w-10 h-10 transform rotate-180`} />
-                  <Triangle className={`absolute bottom-1/4 ${item.decorationClass} opacity-10 right-1/4 w-10 h-10 transform rotate-45`} />
-                  <Triangle className={`absolute bottom-0 ${item.decorationClass} opacity-10 left-0 w-12 h-12 transform -rotate-45 -translate-x-1/2 translate-y-1/2`} />
-                </CardContent>
-              </MagicCard>
-            ))}
-          </section>
+          
 
           <section
             aria-labelledby="values-objectives-heading"
@@ -282,13 +223,5 @@ function ServiceCard({ icon, title, description, imageSrc }: ServiceCardProps) {
         <p className="text-muted-foreground">{description}</p>
       </CardContent>
     </Card>
-  );
-}
-
-function Triangle({ className }: { className?: string }) {
-  return (
-    <div className={`${className} overflow-hidden`}>
-      <div className="w-full h-full bg-secondary/20 transform rotate-45 scale-150" />
-    </div>
   );
 }
