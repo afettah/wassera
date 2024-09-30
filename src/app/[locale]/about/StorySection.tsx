@@ -46,9 +46,9 @@ function StorySection() {
   };
 
   return (
-    <Card className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+    <Card className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <Container>
-        <div className="container mx-auto">
+        <div className="">
           <motion.div
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
             initial="hidden"
