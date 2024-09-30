@@ -1,8 +1,9 @@
-import Container from "../../components/container";
-import BackgroundImageContainer from "../../components/backgroundImageContainer";
-import Header from "./header";
-import ValuesObjectivesSection from "./ValuesObjectivesSection";
-import ServicesSection from "./ServicesSection";
+import Container from '../../components/container';
+import BackgroundImageContainer from '../../components/backgroundImageContainer';
+import Header from './header';
+import ValuesObjectivesSection from './ValuesObjectivesSection';
+import ServicesSection from './ServicesSection';
+import StorySection from './StorySection';
 
 export default function AboutPage() {
   return (
@@ -10,6 +11,7 @@ export default function AboutPage() {
       <Container className="min-h-screen">
         <div className="container mx-auto px-4 space-y-24">
           <Header />
+          <StorySection />
           <ValuesObjectivesSection />
           <ServicesSection />
         </div>
