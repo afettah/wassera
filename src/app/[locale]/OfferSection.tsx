@@ -61,7 +61,7 @@ export default function OfferSection() {
             {' '}
             {Array.from({ length: offerCount }).map((_, i) => (
               <li key={i} className="flex items-start">
-                <span className="text-primary mr-2">■</span>
+                <span className="text-primary mr-2 ml-2">■</span>
                 {/* @ts-expect-error: Dynamic key based on index, which TypeScript cannot infer */}
                 <p>{offertT(`list.${i}`)}</p>
               </li>
