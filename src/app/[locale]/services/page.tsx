@@ -1,9 +1,16 @@
-import React from 'react'
+import BackgroundImageContainer from "@/app/components/backgroundImageContainer";
+import Container from "@/app/components/container";
+import React from "react";
+import ServicesSection from "../about/ServicesSection";
 
 const Services = () => {
   return (
-    <div>Services</div>
-  )
-}
+    <BackgroundImageContainer>
+      <Container>
+        <ServicesSection />
+      </Container>
+    </BackgroundImageContainer>
+  );
+};
 
-export default Services
+export default Services;

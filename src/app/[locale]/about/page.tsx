@@ -1,9 +1,8 @@
-import Container from '../../components/container';
-import BackgroundImageContainer from '../../components/backgroundImageContainer';
-import Header from './header';
-import ValuesObjectivesSection from './ValuesObjectivesSection';
-import ServicesSection from './ServicesSection';
-import StorySection from './StorySection';
+import Container from "../../components/container";
+import BackgroundImageContainer from "../../components/backgroundImageContainer";
+import Header from "./header";
+import ValuesObjectivesSection from "./ValuesObjectivesSection";
+import StorySection from "./StorySection";
 
 export default function AboutPage() {
   return (
@@ -13,7 +12,6 @@ export default function AboutPage() {
           <Header />
           <StorySection />
           <ValuesObjectivesSection />
-          <ServicesSection />
         </div>
       </Container>
     </BackgroundImageContainer>
