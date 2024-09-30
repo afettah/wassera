@@ -40,7 +40,7 @@ export default function OfferSection() {
           initial="hidden"
           animate={inView1 ? 'visible' : 'hidden'}
           variants={leftToRightVariants}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 1 }}
         >
           <div className="absolute inset-0 bg-[#FFA500] opacity-20 transform -skew-x-12 w-full h-full"></div>{' '}
           <Image src="/images/offers.png" alt="Person using a laptop" width={400} height={400} className="relative z-10 w-full h-auto" />
@@ -52,7 +52,7 @@ export default function OfferSection() {
           initial="hidden"
           animate={inView2 ? 'visible' : 'hidden'}
           variants={rightToLeftVariants}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 1 }}
         >
           <h3 className="text-2xl md:text-4xl">{offertT('title.line1')}</h3>
           <h2 className="text-4xl md:text-6xl font-bold mb-4">

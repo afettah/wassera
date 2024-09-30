@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 import BackgroundImageContainer from "@/app/components/backgroundImageContainer";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -35,6 +35,14 @@ const socialLinks = [
     href: "https://www.linkedin.com",
   },
 ];
+
+const mapLocation = {
+  address: "7134 Al-Rayyan District, Al-Nafal District",
+  city: "Riyadh",
+  state: "Riyadh",
+  zip: "13312",
+  country: "Kingdom of Saudi Arabia",
+};
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -79,6 +87,10 @@ export default function ContactUs() {
     // Handle form submission logic here
     console.log("Form submitted:", formData);
   };
+
+  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(
+    mapLocation.address
+  )}`;
 
   return (
     <BackgroundImageContainer>
@@ -155,7 +167,7 @@ export default function ContactUs() {
             </CardContent>
           </Card>
 
-          {/* Social Links Section */}
+          {/* social media Section */}
           <Card>
             <CardHeader>
               <CardTitle className="text-center">Connect With Us</CardTitle>
@@ -164,13 +176,13 @@ export default function ContactUs() {
               <div className="flex justify-center items-center space-x-8">
                 {socialLinks.map((social) => (
                   <Link
-                  key={social.label}
-                  href={social.href}
-                  className={`${social.color} p-2 opacity-70 hover:opacity-100 transition-all duration-300 ease-in-out transform hover:scale-110`}
-                  aria-label={social.label}
+                    key={social.label}
+                    href={social.href}
+                    className={`${social.color} p-2 opacity-70 hover:opacity-100 transition-all duration-300 ease-in-out transform hover:scale-110`}
+                    aria-label={social.label}
                   >
-                  <social.icon className="h-12 w-12 " />
-                  <span className="sr-only ">{social.label}</span>
+                    <social.icon className="h-12 w-12 " />
+                    <span className="sr-only ">{social.label}</span>
                   </Link>
                 ))}
               </div>
@@ -184,13 +196,21 @@ export default function ContactUs() {
             </CardHeader>
             <CardContent>
               <div className="relative h-64 bg-gray-100 rounded-md overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <MapPin className="h-12 w-12 text-gray-400" />
-                </div>
+                <iframe
+                  src={mapSrc}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                ></iframe>
               </div>
               <div className="mt-4">
-                <p className="text-gray-800">123 Main Street</p>
-                <p className="text-gray-600">Cityville, State 12345</p>
+                <p className="text-gray-800">{mapLocation.address}</p>
+                <p className="text-gray-600">
+                  {mapLocation.city}, {mapLocation.state} {mapLocation.zip}
+                </p>
+                <p className="text-gray-600">{mapLocation.country}</p>
               </div>
             </CardContent>
           </Card>

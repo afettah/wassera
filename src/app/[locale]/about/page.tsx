@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <BackgroundImageContainer className="overflow-hidden">
       <Container className="min-h-screen">
-        <div className="container mx-auto px-4 space-y-24">
+        <div className="container mx-auto space-y-24">
           <Header />
           <StorySection />
           <ValuesObjectivesSection />
