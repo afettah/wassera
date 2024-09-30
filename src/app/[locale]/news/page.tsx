@@ -12,25 +12,25 @@ export default function NewsPage() {
   // Define news data at the beginning
   const newsData = {
     breakingNews: {
-      title: 'Breaking News: Major Scientific Discovery',
-      description: 'Scientists announce breakthrough in quantum computing',
-      image: '/placeholder.svg?height=400&width=800',
+      title: 'Breaking News: Wassera Launches Mobile App',
+      description: 'Wassera introduces its innovative mobile platform for easier access to mortgage and investment services.',
+      image: '/images/news/mobile.png',
       content:
-        'In a groundbreaking development, researchers at the Quantum Institute have achieved a major milestone in quantum computing, potentially revolutionizing the field of cryptography and data processing...',
+        'In a bold move to modernize financial services, Wassera has unveiled its new mobile app, offering users seamless access to mortgage loans, investment opportunities, and savings services directly from their smartphones. The app promises a user-friendly interface, enhanced security, and real-time financial insights...',
     },
     latestNews: [
-      'Global Summit Addresses Climate Change',
-      'Tech Giant Unveils New Smartphone',
-      'Sports Team Wins Championship',
-      'Movie Star Announces Retirement',
+      'Wassera Secures $50 Million in Series B Funding',
+      'We Are Hiring: Join Wassera’s Growing Team',
+      'Wassera Partners with Leading Investment Firm for New Opportunities',
+      'Wassera Expands its Services Across the MENA Region',
     ],
     stories: [
-      { title: 'Economic Forecast: Experts Predict Growth', image: '/placeholder.svg?height=200&width=300' },
-      { title: 'New Study Reveals Health Benefits of Mediterranean Diet', image: '/placeholder.svg?height=200&width=300' },
-      { title: 'Space Agency Announces Plans for Mars Mission', image: '/placeholder.svg?height=200&width=300' },
-      { title: 'Environmental Initiative Aims to Reduce Plastic Waste', image: '/placeholder.svg?height=200&width=300' },
-      { title: 'Tech Startup Revolutionizes Renewable Energy Sector', image: '/placeholder.svg?height=200&width=300' },
-      { title: 'Global Education Summit Addresses Learning Gaps', image: '/placeholder.svg?height=200&width=300' },
+      { title: 'Wassera CEO Discusses Vision 2030 Alignment and Future Growth', image: '/images/news/ceo.png' },
+      { title: 'Wassera Invests in FinTech Education for Saudi Youth', image: '/images/news/fine_tec.jpg' },
+      { title: 'How Wassera is Revolutionizing the Mortgage Industry in the GCC', image: '/images/news/ksa.png' },
+      { title: 'Wassera Wins Award for Financial Sustainability Innovation', image: '/images/news/banks.png' },
+      { title: 'Wassera Mobile App Hits 1 Million Downloads in the First Week', image: '/images/news/mobile_app.png' },
+      { title: 'Wassera to Launch New Savings Product Tailored for Young Investors', image: '/images/news/book.png' },
     ],
   };
 
