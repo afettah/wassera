@@ -1,3 +1,5 @@
+import { stat } from 'fs';
+
 export default {
   global: {
     learnMore: 'اعرف المزيد',
@@ -54,6 +56,18 @@ export default {
 
         'تصفية الالتزامات المالية للعميل لتسهيل عملية رسملة الأصول/ تمويل الأصول',
       ],
+    },
+    statistics: {
+      title: 'قيمة سوق الرهن العقاري في السعودية',
+      totalMortgageValue: 'الرهن العقاري الإجمالي',
+      averageMortgageValue: 'متوسط قيمة الرهن',
+      averageMortgageDescription: 'متوسط قيمة الرهن العقاري',
+      activeMortgages: 'رهن عقاري نشط',
+      mortageCount: 'رهن في 2024',
+      billion: 'مليار',
+      million: 'مليون',
+      plus: '+',
+      k: 'ألف',
     },
   },
 } as const;

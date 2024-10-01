@@ -51,5 +51,16 @@ export default {
         'Clear Off Balance Sheet liabilities for Assets capitalization',
       ],
     },
+    statistics: {
+      title: 'Mortgage Market Values in Saudi Arabia',
+      totalMortgageValue: 'Total Mortgage Value',
+      averageMortgageValue: 'Average Mortgage Value',
+      activeMortgages: 'Active Mortgages',
+      mortageCount: 'Mortgages in 2024',
+      billion: 'Bn',
+      million: 'Mn',
+      plus: '+',
+      k: 'K',
+    },
   },
 } as const;

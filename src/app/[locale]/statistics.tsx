@@ -4,34 +4,47 @@ import { useState } from 'react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 import Container from '../components/container';
+import { useScopedI18n } from '@/locales/client';
 
-const statistics = [
-  {
-    id: 'countto2',
-    value: 350,
-    label: 'Trusted Clients',
-  },
-  {
-    id: 'countto3',
-    value: 15,
-    label: 'Years of Experience',
-    decimals: 1,
-  },
-  {
-    id: 'countto4',
-    value: 215,
-    label: 'Finished Projects',
-  },
-  {
-    id: 'countto5',
-    value: 3,
-    prefix: '+',
-    suffix: 'M',
-    label: 'Annual Profits',
-  },
-];
-
+type Statistic = {
+  id: string;
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  label: string;
+  description?: string;
+  decimals?: number;
+};
 export default function Statistics() {
+  const statisticsT = useScopedI18n('home.statistics');
+  const statistics: Statistic[] = [
+    {
+      id: 'totalMortgageValue',
+      value: 700,
+      suffix: statisticsT('billion'),
+      label: statisticsT('totalMortgageValue'),
+    },
+    {
+      id: 'averageMortgageValue',
+      value: 4.5,
+      decimals: 1,
+      suffix: statisticsT('million'),
+      label: statisticsT('averageMortgageValue'),
+    },
+    {
+      id: 'activeMortgages',
+      value: 500,
+      suffix: statisticsT('k') + statisticsT('plus'),
+      label: statisticsT('activeMortgages'),
+    },
+    {
+      id: 'mortageCount',
+      value: 150,
+      suffix: statisticsT('k'),
+      label: statisticsT('mortageCount'),
+    },
+  ];
+
   const [hasAnimated, setHasAnimated] = useState(false);
   const { ref } = useInView({
     triggerOnce: true,
@@ -45,8 +58,9 @@ export default function Statistics() {
   return (
     <div className="bg-gray-100 py-6" ref={ref}>
       <Container>
+        <h2 className="text-4xl font-bold text-center text-primary">{statisticsT('title')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-          {statistics.map((stat) => (
+          {statistics.map((stat: Statistic) => (
             <div key={stat.id}>
               <div className="flex items-center gap-3 p-6">
                 <h3 className="text-6xl font-bold leading-tight text-center text-primary ">
