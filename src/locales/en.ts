@@ -62,5 +62,17 @@ export default {
       plus: '+',
       k: 'K',
     },
+    partnerships: {
+      title: 'Partnerships',
+      description: 'Our relationships prepare businesses for the future. We work with a trusted, select group of partners.',
+    },
+  },
+  footer: {
+    contacts: 'Contacts',
+    address: '7134 Al-Rayyan District, Al-Nafal District, Riyadh 13312 Kingdom of Saudi Arabia',
+    description: 'The leading fintech solution that uses nft, ai, and blockchain technologies to unlock the value of untapped equities.',
+    security: 'Security',
+    privacy: 'Privacy Policy',
+    rights: 'All Rights Reserved © Waseera',
   },
 } as const;

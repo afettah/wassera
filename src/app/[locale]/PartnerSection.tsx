@@ -1,128 +1,80 @@
+'use client';
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
 import Container from '../components/container';
-import AjrasLogo from '@/app/images/ajras.png';
-import AnkrLogo from '@/app/images/ankr.png';
-import IbanaLogo from '@/app/images/ibana.png';
-import STCLogo from '@/app/images/stc.png';
-import SCLogo from '@/app/images/SaudiCentral.png';
-import CITCLogo from '@/app/images/citc.png';
-import Design from '@/app/images/Design.svg';
+import { useCurrentLocale, useScopedI18n } from '@/locales/client';
+import Locale from 'intl-locale-textinfo-polyfill';
 
-const partnerCategories = [
-  {
-    title: 'Technology Providers',
-    partners: [
-      { name: 'STC', logo: STCLogo },
-      { name: 'Ankr', logo: AnkrLogo },
-      { name: 'Ankr', logo: AnkrLogo },
-      { name: 'Ankr', logo: AnkrLogo },
-    ],
-  },
-  {
-    title: 'Potential Clients',
-    partners: [
-      { name: 'Ajras', logo: AjrasLogo },
-      { name: 'Ibana', logo: IbanaLogo },
-    ],
-  },
-  {
-    title: 'Regulatory Bodies',
-    partners: [
-      {
-        name: 'Saudi Central Bank',
-        logo: SCLogo,
-      },
-      {
-        name: 'Communications, Space & Technology Commission',
-        logo: CITCLogo,
-      },
-      {
-        name: 'Communications, Space & Technology Commission',
-        logo: CITCLogo,
-      },
-      {
-        name: 'Communications, Space & Technology Commission',
-        logo: CITCLogo,
-      },
-    ],
-  },
+const files = [
+  'Zoho.webp',
+  'bankers-lab.jpg',
+  'darco.jpg',
+  'jeel.png',
+  'KAUST.png',
+  'Knowledge-Net.jpg',
+  'KSU.jpg',
+  'menassat logo.png',
+  'Microsoft.jpg',
+  'misk.jpg',
+  'NKB.jpg',
+  'plugandplay.jpg',
+  'ryad-bank.png',
+  'SAB.png',
+  'SADU.jpg',
+  'sarwa.jpg',
+  'Singleview.png',
+  'siolla.png',
+  'STC.jpg',
+  'tabadul.jpg',
+  'TAQADAM.webp',
+  'WAED.jpg',
 ];
 
-function renderTechnologyProviders() {
-  const category = partnerCategories.find((category) => category.title === 'Technology Providers');
-  return (
-    <div>
-      <h3 className="text-xl font-semibold mb-4 text-center">{category?.title}</h3>
-      <div className="space-y-6">
-        {category?.partners.map((partner, index) => (
-          <Card key={index} className="hover:shadow-md transition-shadow min-h-32 flex justify-center items-center">
-            <CardContent className="flex items-center justify-center p-4 h-24">
-              <Image src={partner.logo} alt={partner.name} width={300} height={100} className="max-w-full max-h-full object-contain" />
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-}
+const TrustedByLogos = () => {
+  const locale = useCurrentLocale();
+  const { direction: dir } = new Locale(locale).textInfo;
 
-function renderPotentialClients() {
-  const category = partnerCategories.find((category) => category.title === 'Potential Clients');
   return (
-    <div>
-      <h3 className="text-xl font-semibold mb-4 text-center">{category?.title}</h3>
-      <div className="space-y-6">
-        {category?.partners.map((partner, index) => (
-          <Card key={index} className="hover:shadow-md transition-shadow min-h-32 flex justify-center items-center">
-            <CardContent className="flex items-center justify-center p-4 h-24">
-              <Image src={partner.logo} alt={partner.name} width={300} height={100} className="max-w-full max-h-full object-contain" />
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-      <div>
-        <Design />
-      </div>
-    </div>
+    <motion.div
+      className="flex space-x-8 w-[200%]"
+      animate={{ x: dir === 'ltr' ? '-100%' : '100%' }}
+      transition={{
+        ease: 'linear',
+        duration: 30,
+        repeat: Infinity,
+      }}
+    >
+      {files.map((file, index) => (
+        <motion.div key={index} className="h-auto w-32 sm:w-48 lg:w-56 flex-shrink-0" whileHover={{ scale: 1.4 }}>
+          <Image
+            src={`/images/partnerships/${file}`}
+            alt={`Partner logo ${index}`}
+            width={300}
+            height={100}
+            className="object-contain w-full h-full"
+          />
+        </motion.div>
+      ))}
+    </motion.div>
   );
-}
-
-function renderRegulatoryBodies() {
-  const category = partnerCategories.find((category) => category.title === 'Regulatory Bodies');
-  return (
-    <div>
-      <h3 className="text-xl font-semibold mb-4 text-center">{category?.title}</h3>
-      <div className="space-y-6">
-        {category?.partners.map((partner, index) => (
-          <Card key={index} className="hover:shadow-md transition-shadow min-h-32 flex justify-center items-center">
-            <CardContent className="flex items-center justify-center p-4 h-24">
-              <Image src={partner.logo} alt={partner.name} width={300} height={100} className="max-w-full max-h-full object-contain" />
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-}
+};
 
 export default function WaseeraPartnerships() {
+  const parternshipsT = useScopedI18n('home.partnerships');
   return (
-    <Container className="py-14">
-      <div>
-        <h2 className="text-6xl font-semibold text-center mb-2">
-          <span className="text-primary">Waseera</span> Partnerships
-        </h2>
-        <p className="text-center text-secondary-foreground text-lg mb-8 my-4">
-          Our relationships prepare businesses for the future. We work with a trusted, select group of partners.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {renderTechnologyProviders()}
-          {renderPotentialClients()}
-          {renderRegulatoryBodies()}
+    <>
+      <Container>
+        <div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-center mb-4">
+            <span className="text-primary">Waseera</span> {parternshipsT('title')}
+          </h2>
+          <p className="text-center text-secondary-foreground text-base sm:text-lg lg:text-xl my-4">{parternshipsT('description')} </p>
         </div>
+      </Container>
+
+      <div className="w-full overflow-hidden">
+        <TrustedByLogos />
       </div>
-    </Container>
+    </>
   );
 }

@@ -5,7 +5,9 @@ import Logo from '@/app/images/logo.svg';
 
 import LeftFooterSvg from '@/app/images/left-footer.svg';
 import RightFooterSvg from '@/app/images/right-footer.svg';
-export default function Footer() {
+import { getScopedI18n } from '@/locales/server';
+export default async function Footer() {
+  const footerT = await getScopedI18n('footer');
   const footerData = {
     logo: {
       src: '',
@@ -13,7 +15,7 @@ export default function Footer() {
       width: 150,
       height: 50,
     },
-    description: 'The leading fintech solution that uses nft, ai, and blockchain technologies to unlock the value of untapped equities.',
+    description: footerT('description'),
     contacts: [
       {
         type: 'phone',
@@ -30,10 +32,9 @@ export default function Footer() {
       {
         type: 'address',
         icon: MapPin,
-        text: '7134 Al-Rayyan District, Al-Nafal District,\nRiyadh 13312 Kingdom of Saudi Arabia',
+        text: footerT('address'),
       },
     ],
-    links: ['Terms', 'Privacy', 'Security'],
   };
 
   return (
@@ -59,7 +60,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-semibold mb-6 relative">
-              Contacts
+              {footerT('contacts')}
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary"></span>
             </h3>
             <div className="space-y-4">
@@ -88,15 +89,7 @@ export default function Footer() {
       </Container>
       <div className="border-t bg-[#0e1e15] border-white py-4 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-center gap-8 items-center">
-          <p className=" ">All Rights Reserved © Waseera</p>
-          <div className="flex space-x-6 mt-4 sm:mt-0">
-            {footerData.links.map((item) => (
-              <Link key={item} href={`/${item.toLowerCase()}`} className="hover:text-white transition-colors duration-200 relative group">
-                {item}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
-              </Link>
-            ))}
-          </div>
+          <p className=" ">{footerT('rights')}</p>
         </div>
       </div>
     </footer>
