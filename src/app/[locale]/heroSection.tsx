@@ -2,11 +2,12 @@ import Image from 'next/image';
 import Container from '../components/container';
 import { getScopedI18n } from '@/locales/server';
 import CustomButton from '../components/button';
+import HeroVideoPlayer from './HeroVideoPlayer'; // Import the client-side component
 
 export default async function HeroSection() {
   const heroT = await getScopedI18n('home.hero');
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20 xl:py-28">
+    <section className="w-full min-h-screen py-12 md:py-16 lg:py-20 xl:py-28">
       <Container>
         <div className="container">
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
@@ -24,13 +25,7 @@ export default async function HeroSection() {
                 </CustomButton>
               </div>
             </div>
-            <Image
-              alt="Hero"
-              className="mx-auto overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
-              height="800"
-              src="/images/hero2.png"
-              width="500"
-            />
+            <HeroVideoPlayer />
           </div>
         </div>
       </Container>
