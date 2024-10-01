@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Container from '../components/container';
 import { getScopedI18n } from '@/locales/server';
 import CustomButton from '../components/button';
