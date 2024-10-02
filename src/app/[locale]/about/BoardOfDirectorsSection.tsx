@@ -45,7 +45,7 @@ export default function BoardOfDirectorsSection() {
         >
           Board of Directors
         </motion.h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {directors.map((director, index) => (
             <motion.div 
               key={director.name} 
