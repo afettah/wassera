@@ -4,7 +4,7 @@ import { LanguageSwitcher } from './languagueSwitcher';
 
 export default function TopBar() {
   const headerContacts = {
-    email: 'info@wassera.com.sa',
+    email: 'info@wassera.sa',
     phone: '+966 59 857 7775',
   };
 

@@ -31,10 +31,9 @@ export default function TopMenu() {
 
   const navigation = [
     { name: menuT('home'), href: '/' },
-    { name: menuT('about'), href: '/about' },
     { name: menuT('services'), href: '/services' },
     { name: menuT('news'), href: '/news' },
-    { name: menuT('careers'), href: '/careers', disabled: true },
+    { name: menuT('about'), href: '/about' },
     { name: menuT('contact'), href: '/contact' },
   ];
 

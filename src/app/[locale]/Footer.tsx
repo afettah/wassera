@@ -25,9 +25,9 @@ export default async function Footer() {
       },
       {
         type: 'email',
-        href: 'mailto:info@waseera.com.sa',
+        href: 'mailto:info@waseera.sa',
         icon: Mail,
-        text: 'info@waseera.com.sa',
+        text: 'info@waseera.sa',
       },
       {
         type: 'address',

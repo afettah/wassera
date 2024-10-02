@@ -16,7 +16,7 @@ export default async function HeroSection() {
                 <p className="max-w-[600px] md:text-xl mx-auto lg:mx-0">{heroT('description')}</p>
               </div>
               <div className="flex flex-col gap-2 w-full justify-center items-center min-[400px]:flex-row lg:justify-start">
-                <CustomButton type="primary" variant="default" className="px-4 py-2 text-sm">
+              <CustomButton type="primary" variant="default" className="px-4 py-2 text-sm">
                   {heroT('button.started')}
                 </CustomButton>
                 <CustomButton type="orange" variant="default" className="px-4 py-2 text-sm">
