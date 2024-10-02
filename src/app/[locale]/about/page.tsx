@@ -4,6 +4,7 @@ import Header from "./header";
 import ValuesObjectivesSection from "./ValuesObjectivesSection";
 import StorySection from "./StorySection";
 import BoardOfDirectorsSection from "./BoardOfDirectorsSection";
+import FoundersSection from "./FounderSection";
 
 export default function AboutPage() {
   return (
@@ -14,6 +15,7 @@ export default function AboutPage() {
           <StorySection />
           <ValuesObjectivesSection />
           <BoardOfDirectorsSection />
+          <FoundersSection />
         </div>
       </Container>
     </BackgroundImageContainer>

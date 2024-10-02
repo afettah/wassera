@@ -32,13 +32,13 @@ export default function BoardOfDirectorsSection() {
   }, [controls, isInView])
 
   return (
-    <section ref={ref} className="py-12 md:py-24">
-      <div className="container mx-auto px-4">
+    <section ref={ref} className="py-12 ">
+      <div >
         <motion.h2 
           className="text-3xl font-bold mb-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.7 }}
           variants={{
             visible: { opacity: 1, y: 0 }
           }}
@@ -52,7 +52,7 @@ export default function BoardOfDirectorsSection() {
               className="flex flex-col items-center"
               initial={{ opacity: 0, y: 50 }}
               animate={controls}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
               variants={{
                 visible: { opacity: 1, y: 0 }
               }}
