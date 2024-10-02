@@ -3,6 +3,7 @@ import BackgroundImageContainer from "../../components/backgroundImageContainer"
 import Header from "./header";
 import ValuesObjectivesSection from "./ValuesObjectivesSection";
 import StorySection from "./StorySection";
+import BoardOfDirectorsSection from "./BoardOfDirectorsSection";
 
 export default function AboutPage() {
   return (
@@ -12,6 +13,7 @@ export default function AboutPage() {
           <Header />
           <StorySection />
           <ValuesObjectivesSection />
+          <BoardOfDirectorsSection />
         </div>
       </Container>
     </BackgroundImageContainer>
