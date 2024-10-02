@@ -22,24 +22,44 @@ export default {
       },
       registration: {
         button: 'Get Started',
-        modalTitle: 'Thank You!',
-        message: 'Dear customer, thank you for choosing us! We will announce BABL investment services very soon.',
-        info: 'Join our waiting list for early customer advantages.',
-        firstName: 'First Name',
-        lastName: 'Last Name',
-        email: 'Email',
-        phone: 'Phone',
-        serviceType: 'Service Type',
-        selectService: 'Select a service',
-        service: {
-          mortgageSplit:
-            'Mortgage Split offers a tailored financing solution by dividing your mortgage into separate portions with varying terms, including fixed and variable rates.',
-          investments:
-            "Investments provide a strategic opportunity to grow customers' financial inclusion, capitalizing on untapped equities with investment options tailored to your financial goals and risk tolerance.",
-          assetBackedLoan:
-            'Asset-Backed Loan provides funding brokerage services secured by collateral, offering flexible financing options for various needs and situations.',
-          savings:
-            'Savings offers flexible savings solutions designed to help you efficiently accumulate and manage your funds, ensuring your money works towards achieving your long-term financial objectives.',
+        modalTitle: 'Join the Adventure with Us!',
+        message1: 'Dear customer, thank you for choosing us! We will announce Waseera investment services very soon.',
+        message2: 'Join our waiting list for exclusive early access benefits.',
+        fields: {
+          firstName: {
+            label: 'First Name',
+          },
+          lastName: {
+            label: 'Last Name',
+          },
+          email: {
+            label: 'Email',
+          },
+          phone: {
+            label: 'Phone',
+          },
+          serviceType: {
+            label: 'Service Type',
+            description: 'Select the service(s) you’re interested in to explore with Waseer',
+            options: {
+              mortgageSplit: {
+                label: 'Mortgage Split',
+                description: 'Mortgage Split divides your mortgage with flexible terms and rates.',
+              },
+              investments: {
+                label: 'Investments',
+                description: 'Investments grow your financial inclusion with equity options.',
+              },
+              assetBackedLoan: {
+                label: 'Asset-Backed Loan',
+                description: 'Asset-Backed Loan offers flexible funding secured by collateral.',
+              },
+              savings: {
+                label: 'Savings',
+                description: 'Savings helps you grow and manage funds efficiently.',
+              },
+            },
+          },
         },
         submit: 'Submit',
       },

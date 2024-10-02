@@ -2,6 +2,7 @@ import Container from '../components/container';
 import { getScopedI18n } from '@/locales/server';
 import CustomButton from '../components/button';
 import HeroVideoPlayer from './HeroVideoPlayer'; // Import the client-side component
+import RegistrationForm from './RegistrationForm';
 
 export default async function HeroSection() {
   const heroT = await getScopedI18n('home.hero');
@@ -16,9 +17,12 @@ export default async function HeroSection() {
                 <p className="max-w-[600px] md:text-xl mx-auto lg:mx-0">{heroT('description')}</p>
               </div>
               <div className="flex flex-col gap-2 w-full justify-center items-center min-[400px]:flex-row lg:justify-start">
-              <CustomButton type="primary" variant="default" className="px-4 py-2 text-sm">
-                  {heroT('button.started')}
-                </CustomButton>
+                <RegistrationForm>
+                  <CustomButton type="primary" variant="default" className="px-4 py-2 text-sm">
+                    {heroT('button.started')}
+                  </CustomButton>
+                </RegistrationForm>
+
                 <CustomButton type="orange" variant="default" className="px-4 py-2 text-sm">
                   {heroT('button.more')}
                 </CustomButton>
