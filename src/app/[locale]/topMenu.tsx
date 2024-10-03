@@ -25,7 +25,7 @@ const normalizePath = (path: string, locale?: string) => {
 
 export default function TopMenu() {
   const currentLocale = useCurrentLocale();
-  const pathname = normalizePath(usePathname(), currentLocale);
+  const pathname = normalizePath(usePathname() ?? '', currentLocale);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuT = useScopedI18n('menu');
 

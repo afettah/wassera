@@ -31,6 +31,7 @@
     "framer-motion": "^11.9.0",
     "intl-locale-textinfo-polyfill": "^2.1.1",
     "lucide-react": "^0.446.0",
+    "mongodb": "^6.9.0",
     "multi-select": "^0.3.4",
     "next": "14.2.13",
     "next-international": "^1.2.4",

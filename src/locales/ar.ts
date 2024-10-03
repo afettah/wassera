@@ -62,6 +62,10 @@ export default {
           },
         },
         submit: 'إرسال',
+        success: {
+          title: 'تم التسجيل بنجاح',
+          description: 'شكرًا لتسجيلك معنا! سنتواصل معك قريبًا.',
+        },
       },
     },
     info: {

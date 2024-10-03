@@ -5,6 +5,7 @@ import CustomButton from '../components/button';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useScopedI18n } from '@/locales/client';
+import RegistrationForm from './RegistrationForm';
 
 export default function OfferSection() {
   const { ref: inViewRef1, inView: inView1 } = useInView({
@@ -70,7 +71,11 @@ export default function OfferSection() {
         </motion.div>
       </div>
       <div className="flex justify-center">
-        <CustomButton className="bg-primary font-bold z-20 md:bottom-8 md:right-8">{globalT('getStarted')}</CustomButton>
+        <RegistrationForm>
+          <CustomButton type="primary" variant="default" className="px-4 py-2 text-sm">
+            {globalT('getStarted')}
+          </CustomButton>
+        </RegistrationForm>
       </div>
     </Container>
   );

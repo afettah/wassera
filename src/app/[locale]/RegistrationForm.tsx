@@ -1,6 +1,6 @@
 'use client';
 import { ReactNode, useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from '../../components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../../components/ui/dialog';
 import { useScopedI18n } from '@/locales/client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,9 +14,9 @@ import { Input } from '../../components/ui/input';
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { PhoneInput } from '@/components/ui/phone-input';
+import { toast } from '@/hooks/use-toast';
 
 interface RegistrationFormProps {
-  handleSubmit: (data: FormData) => void;
   children: ReactNode;
 }
 
@@ -25,17 +25,17 @@ const FormSchema = z.object({
   lastName: z.string().min(2, { message: 'Last name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   phone: z.string().regex(/^\+?[1-9]\d{1,14}$/, { message: 'Please enter a valid phone number.' }),
-  servicrType: z.array(z.string()).min(1, { message: 'Please select at least one service.' }),
+  serviceType: z.array(z.string()).min(1, { message: 'Please select at least one service.' }),
 });
 
-export default function RegistrationForm({ handleSubmit, children }: RegistrationFormProps) {
+export default function RegistrationForm({ children }: RegistrationFormProps) {
   const [isOpen, setIsOpen] = useState(false);
   const registrationT = useScopedI18n('home.hero.registration');
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      servicrType: ['mortgageSplit'],
+      serviceType: ['mortgageSplit'],
     },
   });
 
@@ -58,23 +58,50 @@ export default function RegistrationForm({ handleSubmit, children }: Registratio
     { value: 'savings', label: registrationT('fields.serviceType.options.savings.label') },
   ];
 
-  const onSubmit = (data: z.infer<typeof FormSchema>) => {
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     console.log(data);
-    setIsOpen(false);
+
+    try {
+      // Call the /api/customers endpoint
+      const response = await fetch('/api/customers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      // Handle the response
+      if (response.ok) {
+        const result = await response.json();
+        console.log('API Response:', result);
+      } else {
+        console.error('Error submitting form:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    } finally {
+      // Close the modal or perform any cleanup
+      setIsOpen(false);
+      toast({
+        title: registrationT('success.title'),
+        description: <pre className="mt-2 w-[340px] rounded-md bg-primary p-4">{registrationT('success.description')}</pre>,
+      });
+    }
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px] lg:max-w-[800px]">
-        <DialogHeader>
+        <DialogHeader className="space-y-4 mt-4">
           <DialogTitle className="text-start">{registrationT('modalTitle')}</DialogTitle>
-          <DialogDescription className="py-4 ">
+          <div className="my-10">
             <Alert className="text-primary-foreground bg-primary text-lg">
               <AlertTitle className="py-1 text-start">{registrationT('message1')}</AlertTitle>
               <AlertDescription className="text-md text-start">{registrationT('message2')}</AlertDescription>
             </Alert>
-          </DialogDescription>
+          </div>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -135,7 +162,7 @@ export default function RegistrationForm({ handleSubmit, children }: Registratio
 
             <FormField
               control={form.control}
-              name="servicrType"
+              name="serviceType"
               render={() => (
                 <FormItem>
                   <div className="mb-4">
@@ -147,7 +174,7 @@ export default function RegistrationForm({ handleSubmit, children }: Registratio
                       <FormField
                         key={item.value}
                         control={form.control}
-                        name="servicrType"
+                        name="serviceType"
                         render={({ field }) => (
                           <FormItem className="flex flex-row items-start  space-x-2 space-y-0 lg:w-[48%]">
                             <FormControl>

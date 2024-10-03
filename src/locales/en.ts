@@ -62,6 +62,10 @@ export default {
           },
         },
         submit: 'Submit',
+        success: {
+          title: 'Thank you for your submission!',
+          description: 'Your request has been successfully submitted. We will contact you shortly.',
+        },
       },
     },
     info: {

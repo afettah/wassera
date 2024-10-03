@@ -1,11 +1,12 @@
 import Container from '../components/container';
 import { getScopedI18n } from '@/locales/server';
 import CustomButton from '../components/button';
-import HeroVideoPlayer from './HeroVideoPlayer'; // Import the client-side component
+import HeroVideoPlayer from './HeroVideoPlayer';
 import RegistrationForm from './RegistrationForm';
 
 export default async function HeroSection() {
   const heroT = await getScopedI18n('home.hero');
+
   return (
     <section className="w-full min-h-screen py-12 md:py-16 lg:py-20 xl:py-28">
       <Container>
@@ -23,9 +24,11 @@ export default async function HeroSection() {
                   </CustomButton>
                 </RegistrationForm>
 
-                <CustomButton type="orange" variant="default" className="px-4 py-2 text-sm">
-                  {heroT('button.more')}
-                </CustomButton>
+                <a href="/about">
+                  <CustomButton type="orange" variant="default" className="px-4 py-2 text-sm">
+                    {heroT('button.more')}
+                  </CustomButton>
+                </a>
               </div>
             </div>
             <HeroVideoPlayer />
