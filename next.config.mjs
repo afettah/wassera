@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone', // Enable standalone output for optimized production deployment
+  
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/, // Target .svg files

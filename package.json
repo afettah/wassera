@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "mongo:up": "docker-compose -f docker/local/docker-compose.yml up -d",
+    "mongo:down": "docker-compose -f docker/local/docker-compose.yml down",
+    "dev": "npm run mongo:up && next dev",
     "build": "next build",
+    "build-docker": "docker build -t wassera .",
     "start": "next start",
     "lint": "next lint"
   },
