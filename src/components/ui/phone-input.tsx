@@ -13,14 +13,12 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { E164Number } from 'libphonenumber-js';
 type PhoneInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> &
   Omit<RPNInput.Props<typeof RPNInput.default>, 'onChange'> & {
-    onChange?: (value: RPNInput.Value) => void;
+    onChange?: (value?: RPNInput.Value) => void;
   } & {
     defaultCountry?: RPNInput.Country;
   };
-type E164NumberOrEmpty = E164Number | '';
 
 const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwardRef<React.ElementRef<typeof RPNInput.default>, PhoneInputProps>(
   ({ className, onChange, defaultCountry, ...props }, ref) => {
@@ -41,7 +39,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwa
          *
          * @param {E164Number | undefined} value - The entered value
          */
-        onChange={(value: E164NumberOrEmpty) => onChange?.(value || '')}
+        onChange={(value) => onChange?.(value)}
         {...props}
       />
     );

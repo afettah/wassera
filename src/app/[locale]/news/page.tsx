@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -63,7 +64,14 @@ export default function NewsPage() {
                     <CardDescription>{newsData.breakingNews.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <img src={newsData.breakingNews.image} alt="Quantum Computer" className="w-full h-64 object-cover mb-4 rounded-md" />
+                    <Image
+                      src={newsData.breakingNews.image}
+                      alt="Quantum Computer"
+                      width={640}
+                      height={256}
+                      className="w-full h-64 object-cover mb-4 rounded-md"
+                      layout="responsive"
+                    />{' '}
                     <p className="text-muted-foreground">{newsData.breakingNews.content}</p>
                   </CardContent>
                   <CardFooter>
@@ -99,7 +107,7 @@ export default function NewsPage() {
                 {newsData.stories.map((story, index) => (
                   <Card key={index}>
                     <CardContent className="p-0">
-                      <img src={story.image} alt={story.title} className="w-full h-40 object-cover" />
+                      <Image src={story.image} alt={story.title} width={400} height={160} className="w-full h-40 object-cover" layout="responsive" />{' '}
                     </CardContent>
                     <CardHeader>
                       <CardTitle className="text-lg">{story.title}</CardTitle>

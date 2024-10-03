@@ -14,7 +14,6 @@ import { Input } from '../../components/ui/input';
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { PhoneInput } from '@/components/ui/phone-input';
-import { toast } from '@/hooks/use-toast';
 
 interface RegistrationFormProps {
   children: ReactNode;
@@ -83,10 +82,6 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
     } finally {
       // Close the modal or perform any cleanup
       setIsOpen(false);
-      toast({
-        title: registrationT('success.title'),
-        description: <pre className="mt-2 w-[340px] rounded-md bg-primary p-4">{registrationT('success.description')}</pre>,
-      });
     }
   };
 
