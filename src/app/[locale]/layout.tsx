@@ -54,7 +54,7 @@ export default function RootLayout({
           isArabic ? geSS.variable : gotham.variable
         } antialiased flex flex-col bg-transparent overflow-x-hidden`}
       >
-        <I18nProviderClient locale={locale}> 
+        <I18nProviderClient locale={locale}>
           <TopBar />
           <TopMenu />
           {children}
