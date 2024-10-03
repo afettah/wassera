@@ -1,56 +1,38 @@
 "use client";
 import Image from "next/image";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, Rocket, Heart, Zap, TrendingUp } from "lucide-react";
 import { MagicCard } from "@/components/ui/magic-card"; // Adjust the import path as necessary
 import Container from "@/app/components/container";
 import { motion } from "framer-motion";
 import { useInView } from 'react-intersection-observer';
 
+interface Value {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
 
-const valuesData = [
-  {
-    title: "Customer-Centricity",
-    description:
-      "Creating a seamless customer experience that goes beyond expectations, putting our clients at the heart of everything we do.",
-    icon: <Users className="h-10 w-10" />,
-  },
-  {
-    title: "Innovation",
-    description:
-      "Delivering innovative services by empowering our team to think big, embrace change, and push the boundaries of what's possible in finance.",
-    icon: <Rocket className="h-10 w-10" />,
-  },
-  {
-    title: "Social Impact",
-    description:
-      "Providing inclusive and affordable solutions across all beneficiary segments, ensuring financial services are accessible to everyone.",
-    icon: <Heart className="h-10 w-10" />,
-  },
-  {
-    title: "Agility",
-    description:
-      "Establishing our operating model by embracing an agile environment and fast-paced workplace, adapting quickly to market changes.",
-    icon: <Zap className="h-10 w-10" />,
-  },
-  {
-    title: "Growth",
-    description:
-      "Supporting Saudi Arabia's ambition to fuel growth in non-oil industries, contributing to a diverse and sustainable economy.",
-    icon: <TrendingUp className="h-10 w-10" />,
-  },
-];
+interface ValuesObjectivesSectionClientProps {
+  heading: string;
+  description: string;
+  valuesData: Value[];
+}
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0 },
 };
 
-export default function ValuesObjectivesSection() {
+export default function ValuesObjectivesSectionClient({
+  heading,
+  description,
+  valuesData,
+}: ValuesObjectivesSectionClientProps) {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.5,
   });
+
   return (
     <Container aria-labelledby="values-objectives-heading" className="relative">
       <Image
@@ -65,12 +47,10 @@ export default function ValuesObjectivesSection() {
           id="values-objectives-heading"
           className="text-4xl font-semibold mb-6 text-center"
         >
-          Our values
+          {heading}
         </h2>
         <p className="text-center mb-12 text-lg max-w-3xl mx-auto">
-          We define our priorities and objectives through our core values,
-          shaped by our commitment to contributing to the Kingdom&apos;s
-          transformation in line with Saudi Vision 2030.
+          {description}
         </p>
         <div className="flex flex-col gap-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
