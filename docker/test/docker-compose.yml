@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+
+  waseera-web-site:
+    image: waseera-web-site
+    container_name: waseera-web-site
+    environment:
+      - NODE_ENV=production
+      - MONGODB_DB=waseera
+      - MONGODB_URI=mongodb://waseera-user:waseera-password@mongo:27017/waseera
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
