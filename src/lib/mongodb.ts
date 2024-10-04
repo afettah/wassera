@@ -14,6 +14,10 @@ if (!dbName) {
   throw new Error('Please define the MONGODB_DB environment variable');
 }
 
+const maskedUri = uri.replace(/(mongodb:\/\/)(.*:.*)@/, '$1*****:*****@');
+
+console.log('Connecting to MongoDB:', maskedUri, 'database:', dbName);
+
 let cachedClient: MongoClient | null = null;
 
 export async function connectToDatabase(): Promise<MongoClient> {

@@ -19,7 +19,6 @@ const storeCustomerData = async (data: z.infer<typeof customerSchema>) => {
   console.log('Storing customer data:', data);
 
   const repository = await CustomerRepository.init();
-  console.log('Repository:', repository);
   return repository.saveCustomer({ firstName, lastName, email, phone, serviceType });
 };
 
