@@ -16,7 +16,7 @@ if (!dbName) {
 
 const maskedUri = uri.replace(/(mongodb:\/\/)(.*:.*)@/, '$1*****:*****@');
 
-console.log('Connecting to MongoDB:', maskedUri, 'database:', dbName);
+console.log('MongoDB:', maskedUri, 'database:', dbName);
 
 let cachedClient: MongoClient | null = null;
 
@@ -26,7 +26,10 @@ export async function connectToDatabase(): Promise<MongoClient> {
   }
 
   const client = new MongoClient(uri as 'string');
-  await client.connect();
+  await client.connect().then(() => console.log('Connected to MongoDB:', maskedUri)).catch((error) => {
+    console.error('Error connecting to MongoDB:', maskedUri, error);
+    throw error;
+  });
   cachedClient = client;
 
   return client;
