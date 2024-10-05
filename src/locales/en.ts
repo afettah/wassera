@@ -202,90 +202,43 @@ export default {
       },
     ],
   },
-  boardOfDirectors: {
-    title: "Board of Directors",
-    directors: [
-      "Naif Al-Watbaan",
-      "Mohammed Al-Eisa",
-      "Abdullah Al-Shaikh",
-      "Mohammed Al-Malki",
-      "Abdulaziz Al Harbi",
-      "Bassam AlBassam",
-    ],
-  },
-  foundersSection: {
-    title: "Our Founders",
-    subtitle:
-      "Meet the visionaries behind our company, bringing years of expertise and innovation to drive our mission forward.",
-    founders: [
-      {
-        name: "Abdulelah Aloshayni",
-        title: "Founder",
-        description:
-          "14 years of Technology and digital transformation expertise holding an executive MBA.",
+  about: {
+    directors: {
+      title: 'Board of Directors',
+    },
+    founders: {
+      title: 'Our Founders',
+      description: 'Meet the visionaries behind our company, bringing years of expertise and innovation to drive our mission forward.',
+      positions: {
+        coFounder: 'Co-Founder',
+        founder: 'Founder',
       },
-      {
-        name: "Saleh AlGhamdi",
-        title: "Co-Founder",
-        description:
-          "17 years of experience in information technology & communications infrastructure.",
-      },
-      {
-        name: "Khalid Alzahrani",
-        title: "Co-Founder",
-        description:
-          "18 years of diverted experiences in many industries with strategic planning, development, and transformation focus.",
-      },
-      {
-        name: "Saud Alharbi",
-        title: "Co-Founder",
-        description:
-          "17 years of IT experience with extensive knowledge of infrastructure & processes.",
-      },
-      {
-        name: "Abdulrahman Alkhalifa",
-        title: "Co-Founder",
-        description:
-          "16 years of experience in marketing and sales in both private and government sectors.",
-      },
-      {
-        name: "Jubran Alshahrani",
-        title: "Co-Founder",
-        description:
-          "15 years of experience in diversified experiences in information technology, shared services, excellence management, new companies building up, governance and transformation. Holding Executive MBA.",
-      },
-      {
-        name: "Amjad Shwali",
-        title: "Co-Founder",
-        description:
-          "16 years of experience, in banking, treasury, and Investment for government & semi-gov entities.",
-      },
-    ],
+    },
   },
   contactUs: {
-    title: "Contact Us",
+    title: 'Contact Us',
     form: {
-      title: "Send us a message",
-      name: "Name",
-      email: "Email",
-      message: "Message",
-      submit: "Send Message",
+      title: 'Send us a message',
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      submit: 'Send Message',
       errors: {
-        name: "Name is required",
-        email: "Email is required",
-        message: "Message is required",
+        name: 'Name is required',
+        email: 'Email is required',
+        message: 'Message is required',
       },
     },
     social: {
-      title: "Connect With Us",
+      title: 'Connect With Us',
     },
     map: {
-      title: "Find Us",
-      address: "7134 Al-Rayyan District, Al-Nafal District",
-      city: "Riyadh",
-      state: "Riyadh",
-      zip: "13312",
-      country: "Kingdom of Saudi Arabia",
+      title: 'Find Us',
+      address: '7134 Al-Rayyan District, Al-Nafal District',
+      city: 'Riyadh',
+      state: 'Riyadh',
+      zip: '13312',
+      country: 'Kingdom of Saudi Arabia',
     },
   },
 

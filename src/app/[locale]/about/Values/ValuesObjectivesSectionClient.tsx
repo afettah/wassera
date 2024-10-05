@@ -1,9 +1,8 @@
-"use client";
-import Image from "next/image";
-import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MagicCard } from "@/components/ui/magic-card"; // Adjust the import path as necessary
-import Container from "@/app/components/container";
-import { motion } from "framer-motion";
+'use client';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { MagicCard } from '@/components/ui/magic-card'; // Adjust the import path as necessary
+import Container from '@/app/components/container';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 interface Value {
@@ -23,11 +22,7 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function ValuesObjectivesSectionClient({
-  heading,
-  description,
-  valuesData,
-}: ValuesObjectivesSectionClientProps) {
+export default function ValuesObjectivesSectionClient({ heading, description, valuesData }: ValuesObjectivesSectionClientProps) {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.5,
@@ -35,23 +30,11 @@ export default function ValuesObjectivesSectionClient({
 
   return (
     <Container aria-labelledby="values-objectives-heading" className="relative">
-      <Image
-        src=""
-        alt="Abstract shapes"
-        width={600}
-        height={600}
-        className="absolute right-0 top-1/2 -translate-y-1/2 opacity-10"
-      />
       <div className="relative z-10">
-        <h2
-          id="values-objectives-heading"
-          className="text-4xl font-semibold mb-6 text-center"
-        >
+        <h2 id="values-objectives-heading" className="text-4xl font-semibold mb-6 text-center">
           {heading}
         </h2>
-        <p className="text-center mb-12 text-lg max-w-3xl mx-auto">
-          {description}
-        </p>
+        <p className="text-center mb-12 text-lg max-w-3xl mx-auto">{description}</p>
         <div className="flex flex-col gap-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {valuesData.slice(0, 3).map((value, index) => (
@@ -59,7 +42,7 @@ export default function ValuesObjectivesSectionClient({
                 ref={ref}
                 key={index}
                 initial="hidden"
-                animate={inView ? "visible" : "hidden"}
+                animate={inView ? 'visible' : 'hidden'}
                 variants={cardVariants}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
@@ -105,16 +88,12 @@ function ValueCard({ icon, title, description, className }: ValueCardProps) {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       <CardHeader>
         <CardTitle className="flex items-center space-x-3 text-xl">
-          <div className="p-2 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
-            {icon}
-          </div>
+          <div className="p-2 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors duration-300">{icon}</div>
           <span>{title}</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-          {description}
-        </p>
+        <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{description}</p>
       </CardContent>
     </MagicCard>
   );

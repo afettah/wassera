@@ -1,32 +1,31 @@
 'use client';
 
-import { useEffect, useRef } from 'react'
-import Image from 'next/image'
-import { motion, useInView, useAnimation } from 'framer-motion'
-import { useScopedI18n } from '@/locales/client'
+import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { motion, useInView, useAnimation } from 'framer-motion';
+import { useCurrentLocale, useScopedI18n } from '@/locales/client';
 
 type Director = {
-  name: string
-  image: string
-}
+  name: string;
+  image: string;
+  arabic: string;
+};
 
 const directors: Director[] = [
-  { name: 'Naif Al-Watbaan', image: '/images/persons/person1.png' },
-  { name: 'Mohammed Al-Eisa', image: '/images/persons/person2.png' },
-  { name: 'Abdullah Al-Shaikh', image: '/images/persons/person3.png' },
-  { name: 'Mohammed Al-Malki', image: '/images/persons/person4.png' },
-  { name: 'Abdulaziz Al Harbi', image: '/images/persons/person5.png' },
-  { name: 'Bassam AlBassam', image: '/images/persons/person6.png' },
-]
-
-// Define the type for director keys
-type DirectorKeys = 'directors.0' | 'directors.1' | 'directors.2' | 'directors.3' | 'directors.4' | 'directors.5'
+  { name: 'Naif Al-Watbaan', image: '/images/team/Naif Al-Watbaan.png', arabic: 'نايف الوطبان' },
+  { name: 'Mohammed Al-Eisa', image: '/images/team/Mohammed Al-Eisa.png', arabic: 'محمد العيسى' },
+  { name: 'Abdullah Al-Shaikh', image: '/images/team/Abdullah Al-Shaikh.png', arabic: 'عبدالله الشيخ' },
+  { name: 'Mohammed Al-Malki', image: '/images/team/Mohammed Al-Malki.png', arabic: 'محمد المالكي' },
+  { name: 'Abdulaziz Al Harbi', image: '/images/team/Abdulaziz Al Harbi.png', arabic: 'عبدالعزيز الحربي' },
+  { name: 'Bassam AlBassam', image: '/images/team/Bassam AlBassam.png', arabic: 'بسام البسام' },
+];
 
 export default function BoardOfDirectorsSection() {
-  const controls = useAnimation()
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
-  const t = useScopedI18n('boardOfDirectors')
+  const aboutT = useScopedI18n('about');
+  const locale = useCurrentLocale();
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   useEffect(() => {
     if (isInView) {
@@ -46,7 +45,7 @@ export default function BoardOfDirectorsSection() {
             visible: { opacity: 1, y: 0 },
           }}
         >
-          {t('title')}
+          {aboutT('directors.title')}
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {directors.map((director, index) => (
@@ -63,13 +62,13 @@ export default function BoardOfDirectorsSection() {
               <div className="relative w-48 h-48 mb-4 overflow-hidden rounded-full">
                 <Image
                   src={director.image}
-                  alt={t(`directors.${index}` as DirectorKeys)}
-                  layout="fill"
-                  objectFit="cover"
+                  alt={director.name}
+                  fill
+                  style={{ objectFit: 'cover' }}
                   className="transition-transform duration-300 hover:scale-110"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-center">{t(`directors.${index}` as DirectorKeys)}</h3>
+              <h3 className="text-xl font-semibold text-center">{locale === 'ar' ? director.arabic : director.name}</h3>
             </motion.div>
           ))}
         </div>
