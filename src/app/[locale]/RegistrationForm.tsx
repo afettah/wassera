@@ -1,91 +1,65 @@
-"use client";
-import { ReactNode, useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../../components/ui/dialog";
-import { useScopedI18n } from "@/locales/client";
+'use client';
+import { ReactNode, useState } from 'react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../../components/ui/dialog';
+import { useScopedI18n } from '@/locales/client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
-import { Button } from "../../components/ui/button";
-import { Checkbox } from "../../components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../components/ui/form";
-import { Input } from "../../components/ui/input";
+import { Button } from '../../components/ui/button';
+import { Checkbox } from '../../components/ui/checkbox';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../../components/ui/form';
+import { Input } from '../../components/ui/input';
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { PhoneInput } from "@/components/ui/phone-input";
-import toast, { Toaster } from "react-hot-toast";
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { PhoneInput } from '@/components/ui/phone-input';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface RegistrationFormProps {
   children: ReactNode;
 }
 
 const FormSchema = z.object({
-  firstName: z
-    .string()
-    .min(2, { message: "First name must be at least 2 characters." }),
-  lastName: z
-    .string()
-    .min(2, { message: "Last name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
+  firstName: z.string().min(2, { message: 'First name must be at least 2 characters.' }),
+  lastName: z.string().min(2, { message: 'Last name must be at least 2 characters.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
   phone: z.string().regex(/^\+?[1-9]\d{1,14}$/, {
-    message: "Please enter a valid phone number.",
+    message: 'Please enter a valid phone number.',
   }),
-  serviceType: z
-    .array(z.string())
-    .min(1, { message: "Please select at least one service." }),
+  serviceType: z.array(z.string()).min(1, { message: 'Please select at least one service.' }),
 });
 
 export default function RegistrationForm({ children }: RegistrationFormProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const registrationT = useScopedI18n("home.hero.registration");
+  const registrationT = useScopedI18n('home.hero.registration');
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      serviceType: ["mortgageSplit"],
+      serviceType: ['mortgageSplit'],
     },
   });
 
   const serviceOptions = [
     {
-      value: "mortgageSplit",
-      label: registrationT("fields.serviceType.options.mortgageSplit.label"),
-      description: registrationT(
-        "fields.serviceType.options.mortgageSplit.description"
-      ),
+      value: 'mortgageSplit',
+      label: registrationT('fields.serviceType.options.mortgageSplit.label'),
+      description: registrationT('fields.serviceType.options.mortgageSplit.description'),
     },
     {
-      value: "investments",
-      label: registrationT("fields.serviceType.options.investments.label"),
-      description: registrationT(
-        "fields.serviceType.options.investments.description"
-      ),
+      value: 'investments',
+      label: registrationT('fields.serviceType.options.investments.label'),
+      description: registrationT('fields.serviceType.options.investments.description'),
     },
     {
-      value: "assetBackedLoan",
-      label: registrationT("fields.serviceType.options.assetBackedLoan.label"),
-      description: registrationT(
-        "fields.serviceType.options.assetBackedLoan.description"
-      ),
+      value: 'assetBackedLoan',
+      label: registrationT('fields.serviceType.options.assetBackedLoan.label'),
+      description: registrationT('fields.serviceType.options.assetBackedLoan.description'),
     },
     {
-      value: "savings",
-      label: registrationT("fields.serviceType.options.savings.label"),
+      value: 'savings',
+      label: registrationT('fields.serviceType.options.savings.label'),
     },
   ];
 
@@ -94,38 +68,35 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
 
     try {
       // Call the /api/customers endpoint
-      const response = await fetch("/api/customers", {
-        method: "POST",
+      const response = await fetch('/api/customers', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
 
+      const toastOptions = {
+        duration: 3000,
+      };
       // Handle the response
       if (response.ok) {
         const result = await response.json();
-        console.log("API Response:", result);
-        toast.success(
-          `${registrationT("success.title")}: ${registrationT(
-            "success.description"
-          )}`
-        );
+        console.log('API Response:', result);
+        toast.success(`${registrationT('success.title')}: ${registrationT('success.description')}`, {
+          ...toastOptions,
+          icon: '🚀',
+        });
       } else {
-        console.error("Error submitting form:", response.statusText);
-        toast.error(
-          `${registrationT("error.title")}: ${registrationT(
-            "error.description"
-          )}`
-        );
+        console.error('Error submitting form:', response.statusText);
+        toast.error(`${registrationT('error.title')}: ${registrationT('error.description')}`, {
+          ...toastOptions,
+          icon: '❌',
+        });
       }
     } catch (error) {
-      console.error("Network error:", error);
-      toast.error(
-        `${registrationT("networkError.title")}: ${registrationT(
-          "networkError.description"
-        )}`
-      );
+      console.error('Network error:', error);
+      toast.error(`${registrationT('networkError.title')}: ${registrationT('networkError.description')}`);
     } finally {
       // Close the modal or perform any cleanup
       setIsOpen(false);
@@ -138,17 +109,11 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
         <DialogTrigger asChild>{children}</DialogTrigger>
         <DialogContent className="sm:max-w-[425px] lg:max-w-[800px]">
           <DialogHeader className="space-y-4 mt-4">
-            <DialogTitle className="text-start">
-              {registrationT("modalTitle")}
-            </DialogTitle>
+            <DialogTitle className="text-start">{registrationT('modalTitle')}</DialogTitle>
             <div className="my-10">
               <Alert className="text-primary-foreground bg-primary text-lg">
-                <AlertTitle className="py-1 text-start">
-                  {registrationT("message1")}
-                </AlertTitle>
-                <AlertDescription className="text-md text-start">
-                  {registrationT("message2")}
-                </AlertDescription>
+                <AlertTitle className="py-1 text-start">{registrationT('message1')}</AlertTitle>
+                <AlertDescription className="text-md text-start">{registrationT('message2')}</AlertDescription>
               </Alert>
             </div>
           </DialogHeader>
@@ -160,9 +125,7 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
                   name="firstName"
                   render={({ field }) => (
                     <FormItem className="lg:w-[48%]">
-                      <FormLabel>
-                        {registrationT("fields.firstName.label")}
-                      </FormLabel>
+                      <FormLabel>{registrationT('fields.firstName.label')}</FormLabel>
                       <FormControl>
                         <Input {...field} />
                       </FormControl>
@@ -175,9 +138,7 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
                   name="lastName"
                   render={({ field }) => (
                     <FormItem className="lg:w-[48%]">
-                      <FormLabel>
-                        {registrationT("fields.lastName.label")}
-                      </FormLabel>
+                      <FormLabel>{registrationT('fields.lastName.label')}</FormLabel>
                       <FormControl>
                         <Input {...field} />
                       </FormControl>
@@ -190,9 +151,7 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
                   name="email"
                   render={({ field }) => (
                     <FormItem className="lg:w-[48%]">
-                      <FormLabel>
-                        {registrationT("fields.email.label")}
-                      </FormLabel>
+                      <FormLabel>{registrationT('fields.email.label')}</FormLabel>
                       <FormControl>
                         <Input {...field} type="email" />
                       </FormControl>
@@ -205,15 +164,9 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
                   name="phone"
                   render={({ field }) => (
                     <FormItem className="lg:w-[48%]">
-                      <FormLabel>
-                        {registrationT("fields.phone.label")}
-                      </FormLabel>
+                      <FormLabel>{registrationT('fields.phone.label')}</FormLabel>
                       <FormControl>
-                        <PhoneInput
-                          defaultCountry={"SA"}
-                          {...field}
-                          type="tel"
-                        />
+                        <PhoneInput defaultCountry={'SA'} {...field} type="tel" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -227,12 +180,8 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
                 render={() => (
                   <FormItem>
                     <div className="mb-4">
-                      <FormLabel className="text-base">
-                        {registrationT("fields.serviceType.label")}
-                      </FormLabel>
-                      <FormDescription>
-                        {registrationT("fields.serviceType.description")}
-                      </FormDescription>
+                      <FormLabel className="text-base">{registrationT('fields.serviceType.label')}</FormLabel>
+                      <FormDescription>{registrationT('fields.serviceType.description')}</FormDescription>
                     </div>
                     <div className="lg:w-3/5 lg:flex lg:flex-wrap lg:gap-4">
                       {serviceOptions.map((item) => (
@@ -247,21 +196,12 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
                                   checked={field.value?.includes(item.value)}
                                   onCheckedChange={(checked) => {
                                     return checked
-                                      ? field.onChange([
-                                          ...field.value,
-                                          item.value,
-                                        ])
-                                      : field.onChange(
-                                          field.value?.filter(
-                                            (value) => value !== item.value
-                                          )
-                                        );
+                                      ? field.onChange([...field.value, item.value])
+                                      : field.onChange(field.value?.filter((value) => value !== item.value));
                                   }}
                                 />
                               </FormControl>
-                              <FormLabel className="font-normal ">
-                                {item.label}
-                              </FormLabel>
+                              <FormLabel className="font-normal ">{item.label}</FormLabel>
                             </FormItem>
                           )}
                         />
@@ -273,7 +213,7 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
               />
 
               <div className="flex justify-center">
-                <Button type="submit">{registrationT("submit")}</Button>
+                <Button type="submit">{registrationT('submit')}</Button>
               </div>
             </form>
           </Form>
@@ -281,7 +221,7 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
       </Dialog>
       <Toaster
         toastOptions={{
-          className: "md:mt-10 ",
+          className: 'md:mt-10 ',
         }}
       />
     </>
