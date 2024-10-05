@@ -3,6 +3,7 @@ import { getScopedI18n } from '@/locales/server';
 import CustomButton from '../components/button';
 import HeroVideoPlayer from './HeroVideoPlayer';
 import RegistrationForm from './RegistrationForm';
+import Link from 'next/link';
 
 export default async function HeroSection() {
   const heroT = await getScopedI18n('home.hero');
@@ -24,11 +25,11 @@ export default async function HeroSection() {
                   </CustomButton>
                 </RegistrationForm>
 
-                <a href="/about">
+                <Link href="/about">
                   <CustomButton type="orange" variant="default" className="px-4 py-2 text-sm">
                     {heroT('button.more')}
                   </CustomButton>
-                </a>
+                </Link>
               </div>
             </div>
             <HeroVideoPlayer />

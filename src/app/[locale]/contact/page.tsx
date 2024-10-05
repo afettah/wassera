@@ -8,6 +8,7 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 import BackgroundImageContainer from "@/app/components/backgroundImageContainer";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { useScopedI18n } from '@/locales/client';
 
 const socialLinks = [
   {
@@ -36,15 +37,8 @@ const socialLinks = [
   },
 ];
 
-const mapLocation = {
-  address: "7134 Al-Rayyan District, Al-Nafal District",
-  city: "Riyadh",
-  state: "Riyadh",
-  zip: "13312",
-  country: "Kingdom of Saudi Arabia",
-};
-
 export default function ContactUs() {
+  const t = useScopedI18n('contactUs');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -74,9 +68,9 @@ export default function ContactUs() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newErrors = {
-      name: formData.name ? "" : "Name is required",
-      email: formData.email ? "" : "Email is required",
-      message: formData.message ? "" : "Message is required",
+      name: formData.name ? "" : t('form.errors.name'),
+      email: formData.email ? "" : t('form.errors.email'),
+      message: formData.message ? "" : t('form.errors.message'),
     };
 
     if (newErrors.name || newErrors.email || newErrors.message) {
@@ -88,6 +82,13 @@ export default function ContactUs() {
     console.log("Form submitted:", formData);
   };
 
+  const mapLocation = {
+    address: t('map.address'),
+    city: t('map.city'),
+    state: t('map.state'),
+    zip: t('map.zip'),
+    country: t('map.country'),
+  };
   const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBOrYxdKm5e-E-O5YPR51KHCSrZxPiaX9g&q=${encodeURIComponent(
     mapLocation.address
   )}`;
@@ -97,13 +98,13 @@ export default function ContactUs() {
       <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto space-y-12">
           <h1 className="text-3xl font-bold text-center text-gray-900">
-            Contact Us
+            {t('title')}
           </h1>
 
           {/* Form Section */}
           <Card>
             <CardHeader>
-              <CardTitle>Send us a message</CardTitle>
+              <CardTitle>{t('form.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <form className="space-y-6" onSubmit={handleSubmit}>
@@ -112,11 +113,11 @@ export default function ContactUs() {
                     htmlFor="name"
                     className="text-sm font-medium text-gray-700"
                   >
-                    Name
+                    {t('form.name')}
                   </label>
                   <Input
                     id="name"
-                    placeholder="Your name"
+                    placeholder={t('form.name')}
                     value={formData.name}
                     onChange={handleChange}
                   />
@@ -129,12 +130,12 @@ export default function ContactUs() {
                     htmlFor="email"
                     className="text-sm font-medium text-gray-700"
                   >
-                    Email
+                    {t('form.email')}
                   </label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="your@email.com"
+                    placeholder={t('form.email')}
                     value={formData.email}
                     onChange={handleChange}
                   />
@@ -147,11 +148,11 @@ export default function ContactUs() {
                     htmlFor="message"
                     className="text-sm font-medium text-gray-700"
                   >
-                    Message
+                    {t('form.message')}
                   </label>
                   <Textarea
                     id="message"
-                    placeholder="Your message"
+                    placeholder={t('form.message')}
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
@@ -161,16 +162,16 @@ export default function ContactUs() {
                   )}
                 </div>
                 <Button type="submit" className="w-full">
-                  Send Message
+                  {t('form.submit')}
                 </Button>
               </form>
             </CardContent>
           </Card>
 
-          {/* social media Section */}
+          {/* Social Media Section */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-center">Connect With Us</CardTitle>
+              <CardTitle className="text-center">{t('social.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex justify-center items-center space-x-8">
@@ -192,7 +193,7 @@ export default function ContactUs() {
           {/* Map Section */}
           <Card>
             <CardHeader>
-              <CardTitle>Find Us</CardTitle>
+              <CardTitle>{t('map.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="relative h-64 bg-gray-100 rounded-md overflow-hidden">
