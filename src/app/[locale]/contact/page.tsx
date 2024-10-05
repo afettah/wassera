@@ -88,7 +88,7 @@ export default function ContactUs() {
     console.log("Form submitted:", formData);
   };
 
-  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(
+  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBOrYxdKm5e-E-O5YPR51KHCSrZxPiaX9g&q=${encodeURIComponent(
     mapLocation.address
   )}`;
 
