@@ -64,6 +64,21 @@ export default {
                 description:
                   "Savings helps you grow and manage funds efficiently.",
               },
+              success: {
+                title: "Thank you for your submission!",
+                description:
+                  "Your request has been successfully submitted. We will contact you shortly.",
+              },
+              error: {
+                title: "Registration Failed",
+                description:
+                  "There was an error with your registration. Please try again.",
+              },
+              networkError: {
+                title: "Network Error",
+                description:
+                  "Network error. Please check your connection and try again.",
+              },
             },
           },
         },
@@ -72,6 +87,16 @@ export default {
           title: "Thank you for your submission!",
           description:
             "Your request has been successfully submitted. We will contact you shortly.",
+        },
+        error: {
+          title: "Registration Failed",
+          description:
+            "There was an error with your registration. Please try again.",
+        },
+        networkError: {
+          title: "Network Error",
+          description:
+            "Network error. Please check your connection and try again.",
         },
       },
     },
