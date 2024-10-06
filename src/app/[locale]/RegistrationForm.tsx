@@ -107,7 +107,7 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>{children}</DialogTrigger>
-        <DialogContent className="sm:max-w-[425px] lg:max-w-[800px]">
+        <DialogContent className="sm:max-w-[425px] lg:max-w-[800px] max-h-[90vh] overflow-y-auto">
           <DialogHeader className="space-y-4 mt-4">
             <DialogTitle className="text-start">{registrationT('modalTitle')}</DialogTitle>
             <div className="my-10">
@@ -212,7 +212,7 @@ export default function RegistrationForm({ children }: RegistrationFormProps) {
                 )}
               />
 
-              <div className="flex justify-center">
+              <div className="flex justify-center mt-4 mb-8">
                 <Button type="submit">{registrationT('submit')}</Button>
               </div>
             </form>
